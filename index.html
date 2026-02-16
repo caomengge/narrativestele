@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhihua Temple: The Four Steles</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --bg: #121212;
+            --panel: #1e1e1e;
+            --text: #e0d8c3;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Hoefler Text', 'Noto Serif SC', 'Noto Serif TC', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #kiosk-container {
+            width: 95%;
+            max-width: 850px;
+            background: var(--panel);
+            padding: 30px 50px;
+            border-radius: 4px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
+            border-top: 2px solid var(--gold);
+            text-align: center;
+            position: relative;
+        }
+
+        #media-main-area {
+            margin-bottom: 15px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #main-display-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border: 1px solid #333;
+            transition: filter 2s ease-in-out, opacity 0.5s;
+        }
+
+        .dimmed { filter: grayscale(100%) brightness(0.2); }
+
+        #name-tag {
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 1.5s;
+        }
+
+        #history-display {
+            height: 180px;
+            margin-bottom: 10px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #history-img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 1px solid #444;
+        }
+
+        #dialogue-box {
+            min-height: 120px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #text-target {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .show-text { opacity: 1 !important; transform: translateY(0) !important; }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            min-height: 60px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 8px 18px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        button:hover { background: var(--gold); color: var(--bg); }
+
+        #end-instruction {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-top: 15px;
+            display: none;
+            font-style: italic;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="kiosk-container">
+    <div id="media-main-area">
+        <img id="main-display-img" src="Start_SickmanStele.jpg" alt="Gallery View">
+    </div>
+    
+    <div id="name-tag"></div>
+
+    <div id="history-display">
+        <img id="history-img" src="" alt="Archival View">
+    </div>
+
+    <div id="dialogue-box">
+        <p id="text-target">Please select a language / 請選擇語言 / 请选择语言</p>
+    </div>
+
+    <div class="btn-group" id="actions">
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('zh')">繁體中文</button>
+        <button onclick="setLanguage('sc')">简体中文</button>
+    </div>
+
+    <p id="end-instruction"></p>
+</div>
+
+<script>
+    const textTarget = document.getElementById('text-target');
+    const actions = document.getElementById('actions');
+    const mainImg = document.getElementById('main-display-img');
+    const nameTag = document.getElementById('name-tag');
+    const historyDisplay = document.getElementById('history-display');
+    const historyImg = document.getElementById('history-img');
+    const endInstruct = document.getElementById('end-instruction');
+
+    let currentLang = 'en';
+    let currentCharacter = 'LS';
+
+    const data = {
+        en: {
+            LS: {
+                name: "Laurence Sickman", portrait: "Laurence Sickman_史克门.jpg", startBtn: "Interact with the Stele", continueBtn: "Continue", nextSteleBtn: "Go to Liu Dunzhen's Stele",
+                steps: {
+                    0: { text: "Good day. You seem to have come from afar. What brings you here today?", choices: [{ label: "I am here to see an exhibition", next: "3a" }, { label: "I am seeking pathways to wisdom", next: "3b" }] },
+                    "3a": { text: "Then we meet on familiar ground. For many years I served as a curator at the Nelson-Atkins Museum of Art.", next: 4 },
+                    "3b": { text: "Hmm, you may even help me with a question that has followed me for years. For many years I served as curator at the Nelson-Atkins Museum of Art.", next: 4 },
+                    4: { text: "Have you seen our Chinese Temple Room Gallery?", image: "ChineseTempleRoom.jpg", choices: [{ label: "This is my first time seeing this", next: 6 }, { label: "Yes, I have been to this place", next: 6 }] },
+                    6: { text: "That gallery occupies a special place in my heart. The mural came from Guangsheng Temple in Shanxi. The coffered ceiling—what you see overhead—came from Zhihua Temple in Beijing.", next: 7 },
+                    7: { text: "I brought them to Kansas City in the 1930s.", next: 8 },
+                    8: { text: "At the time, I had only just finished my training as an art historian. A Harvard–Yenching Fellowship allowed me to live in Beijing and continue my studies.", next: 9 },
+                    9: { text: "It was then that my former teacher, Landon Warner, wrote to me.", next: 10 },
+                    10: { text: "He showed me a photograph published alongside an article by Liu Dunzhen, the architectural historian.", image: "LiuDunzhen_Article.jpg", next: 11 },
+                    11: { text: "The ceiling had already been taken down from Zhihua Temple—a Ming-dynasty Buddhist monastery not far from where I lived—and it was now being offered for sale.", next: 12 },
+                    12: { text: "Warner believed it would be an ideal acquisition for a new museum under construction in Kansas City.", next: 13 },
+                    13: { text: "So I followed whispers and addresses through the city: antique shops, back rooms, introductions; long conversations with dealers; and, inevitably, a great deal of tea.", next: 14 },
+                    14: { text: "At last, the trail led to a modest courtyard near a coffin shop. There, in front of the displaced ceiling, I negotiated the price and made an agreement.", image: "CeilingCourtYard.jpg", next: 15 },
+                    15: { text: "Afterward, I went to Zhihua Temple to understand what, precisely, had been removed.", next: 16 },
+                    16: { text: "I will never forget the room where the ceiling once belonged: walls covered with thousands of small seated Buddhas, like the stars in the cosmo.", image: "SmallBuddhas.jpg", next: 17 },
+                    17: { text: "Years have passed, and yet I keep returning to that room in my sleep, as though a part of me never quite left it.", next: 18 },
+                    18: { text: "Follow the lines on the floor. They will lead you to the first dream. There, you may help me see what I could not.", next: "end" }
+                }
+            },
+            LD: {
+                name: "Liu Dunzhen", portrait: "LiuDunzhen_Portrait.jpg", startBtn: "Interact with the Narrative Stele", continueBtn: "Continue", nextSteleBtn: "Go to Shen Tingfang's Stele",
+                steps: {
+                    0: { text: "You look a bit puzzled—can I help?", next: 1 },
+                    1: { text: "Visitor: Hello. I came to see the exhibition… but I think I just dreamed of a Buddhist hall. In the dream, I became one of the tiny Buddhas on the wall.", next: 3 },
+                    3: { text: "(chuckles) An exhibition? This is the Wanfo Pavilion of Zhihua Temple, is it not?", next: 4 },
+                    4: { text: "Visitor (inner thought): How did I end up at Zhihua Temple? And who is this person…?", next: 5 },
+                    5: { text: "Lately, more and more people have been coming to Zhihua Temple. Just yesterday I met a young American named Sickman. He’s quite perceptive about Chinese art.", next: 6 },
+                    6: { text: "Visitor (inner thought): Suddenly I remember: when I was speaking with Sickman earlier, he mentioned a scholar who studies the history of Chinese architecture…", next: 7 },
+                    7: { text: "Visitor: Excuse me—are you Professor Liu Dunzhen?", next: 8 },
+                    8: { text: "I am. This time I’ve brought my students from Nanjing to Beijing, mainly to conduct field studies of the city’s historic architecture.", next: 9 },
+                    9: { text: "I’ve long been fascinated by Zhihua Temple. It is not only among the oldest surviving official-style timber complexes in the city, but it also integrates elements of Tibetan Buddhist and Pure Land traditions—everywhere you look, there is something to ponder.", next: 10 },
+                    10: { text: "Visitor: Could you tell me more?", next: 11 },
+                    11: { text: "Take the Wanfo Pavilion where we stand, for example. The lower level is called the Tathāgata Hall. It enshrines Śākyamuni Buddha and also houses Buddhist scriptures printed by the Ming imperial court—symbols of a kind of wisdom that can be reached in the human world.", next: 12 },
+                    12: { text: "The upper level, meanwhile, enshrines the “Buddhas of the Three Bodies.” At the center is Vairocana—the Dharma-body Buddha—representing the Buddha’s teaching as an abstract truth, something one can only realize through understanding the canon.", next: 13 },
+                    13: { text: "Above Vairocana, there was once a coffered ceiling, carved with nine dragons and the Eight Auspicious Symbols of Tibetan Buddhism. All around it, the surrounding ceiling was filled with mandala-like spells—together guarding this pure Buddha-land.", next: 14 },
+                    14: { text: "Scriptures below, the Dharma-body above, and the coffered ceiling in between as a protective canopy—this building formed a complete space of faith. But sadly, the coffered ceiling has been dismantled and sold. I have no idea where it has drifted to now…", choices: [{ label: "Tell him it is at the Nelson-Atkins Museum", next: 16 }, { label: "Remain silent", next: 16 }] },
+                    16: { text: "(sighs deeply) I only hope that one day it may see the light again. If Shen Tingfang had not submitted his memorial, perhaps Zhihua Temple would not have fallen into such decline.", next: 17 },
+                    17: { text: "If we don’t act quickly, we may lose this precious cultural heritage forever.", next: 18 },
+                    18: { text: "My students and I are surveying Zhihua Temple, and we plan to build a wooden sectional model of the Tathāgata Hall and the Wanfo Pavilion. Would you be willing to lend us a hand?", image: "WanfoPavilion_Model.jpg", choices: [{label: "Of course", next: "end"}]}
+                }
+            },
+            ST: {
+                name: "Shen Tingfang", portrait: "ShenTingfang_Portrait.jpg", startBtn: "Interact with the Stele", continueBtn: "Continue", nextSteleBtn: "Go to Wang Zhen's Stele",
+                steps: {
+                    0: { text: "Visitor (inner thought): Sounds like someone nearby is reciting a poem.", next: 1 },
+                    1: { text: "“Ten thousand folds of western hills embrace the imperial blue. / From this tower, one gaze—and clouds sink deep and dim.”", next: 2 },
+                    2: { text: "“The vast sky and falling sun stretch boundless, far from sight. / Ere autumn yet is come, the frontier geese reach Northern court.”", next: 3 },
+                    3: { text: "(With a soft sigh) The autumn air in the capital is crisp and clear—perfect for climbing high and gazing into the distance. What a pity... there's no kindred spirit to share this view.", next: 4 },
+                    4: { text: "Visitor (inner thought): I once learnt a poem… should I not answer him in kind?", choices: [{label: "Answer with a poem", next: 5}] },
+                    5: { text: "“By the sandy riverbank, lantern-lights dye the hills a ruddy glow. / Songs and drum resound—amid laughter and bright talk.”", next: 6 },
+                    6: { text: "“Tell me now—doth the youth’s heart yet remain? / With my cap sits askew, my sideburn hairs are like wind-toss’d weed.”", next: 7 },
+                    7: { text: "(Clapping hand) Marvelous! These lines are Master Dongpo’s (Su Shi)—written when he journyed to Hangzhou to serve as examiner, and, climbing the Wanghai Tower on Phoenix Hill.", next: 8 },
+                    8: { text: "I too am from Hangzhou. In my youth, I aspired to learning, with a particular passion for poetry. By the grace of the Emperor, I entered the Hanlin Academy in the capital to compile the History of the Ming Dynasty, studying the rise and fall of rulers and ministers from previous eras.", next: 9 },
+                    9: { text: "Later, I was sent to Shandong to serve as Investigating Censor, overseeing disaster relief efforts. Recently, official business brought me back to the capital, so I seized the chance to visit historic sites and explore scenic spots.", next: 11 },
+                    11: { text: "Visitor (inner thought): Mayhap he holds some clue to Zhihua Temple…", next: 12 },
+                    12: { text: "Visitor: I also enjoy visiting historic sites. Might I ask, sir, have you ever heard of Zhihua Temple?", next: 13 },
+                    13: { text: "I visited Zhihua Temple just a few days ago, and to my astonishment, there stood a wooden effigy of Wang Zhen inside. The common people, ignorant of the truth, were bowing and paying homage to him—truly heartbreaking!", next: 14 },
+                    14: { text: "So I submitted a memorial to the Qianlong Emperor, requesting that the effigy be removed and the inscriptions be smashed, to correct public perception and uphold righteousness.", next: 15 },
+                    15: { text: "Visitor (inner thought): So this is Shen Tingfang, the Qing dynasty censor who changed Zhihua Temple's fate!", next: 16 },
+                    16: { text: "Visitor: My learning is shallow and I am unfamiliar with these past events. I would be honored to receive your instruction.", next: 17 },
+                    17: { text: "Wang Zhen was a eunuch of the Ming dynasty, a devout believer in Buddhism. He donated his residence to build Zhihua Temple, and also used it to honor his ancestors.", next: 18 },
+                    18: { text: "Wang Zhen enjoyed great favor from Emperor Yingzong, but later abused his power and misled the state. During the Tumu Crisis of 1449, he commanded poorly, leading to the complete annihilation of the Ming army and his own death amidst the chaos.", next: 19 },
+                    19: { text: "Since ancient times, when eunuchs seize power, the people suffer. And now, the incense at Zhihua Temple still burns bright—is this not a great injustice of history?", choices: [{ label: "Agree with Shen Tingfang", next: "21a" }, { label: "What about the temple's fate?", next: "21b" }]},
+                    "21a": { text: "Great minds think alike. Taking history as a mirror—that is precisely our generation's responsibility.", next: 22 },
+                    "21b": { text: "The temple itself bears no fault, yet it is inevitably affected. If any consequences arise, I am willing to bear that responsibility.", next: 22 },
+                    22: { text: "(Produces a scroll from his sleeve) We are strangers who met by chance, connected through poetry. This scroll contains several poems by Ming dynasty literati inscribed for Zhihua Temple. Please accept it.", image: "PoetryScroll.jpg", next: "end" }
+                }
+            },
+            WZ: {
+                name: "Wang Zhen", portrait: "WangZhen_Portrait.jpg", startBtn: "Interact with the Stele", continueBtn: "Continue", restartBtn: "Restart Journey",
+                endNote: "Please, follow the marked lines on the floor. They will help you understand my intentions.",
+                steps: {
+                    0: { text: "Audience: (Inner: The sound of music fills the air around me. I find myself amongst a group of monastic musicians. Seated before us is a man in splendid, ornate robes.)", next: 2 },
+                    2: { text: "(With a light sigh) Enough, enough. This 'Middle Court Melody' is played at every recitation of the Avatamsaka Repentance Ritual. How can you still be so unfamiliar with this passage?", next: 3 },
+                    3: { text: "The pieces I taught you were drawn from court music—they are meant to be ancient, solemn, and dignified. Not a single mistake can be tolerated.", next: 4 },
+                    4: { text: "Tomorrow, His Majesty will grace us with a copy of the Yongle Northern Canon printed in the palace. I have already commissioned artisans to build an octagonal sutra cabinet in the Sutra Hall, perfectly sized to house the entire scriptures.", next: 5 },
+                    5: { text: "The performance during the thanking ceremony must not be as careless as today's. Practice diligently. I will return in one hour to check your progress.", next: 6 },
+                    6: { text: "Audience: (Inner: Court music... bestowal of scriptures... Could this man be Wang Zhen, the eunuch who found the Zhihua Temple?)", next: 7 },
+                    7: { text: "Audience: (Approaches) Please, my lord, a moment of your time. May I be so bold as to ask if the Nine-Dragon Coffered Ceiling in the Ten Thousand Buddha Hall has been completed?", next: 8 },
+                    8: { text: "(Slowly turns around) I have revealed the arrangements inside the Ten Thousand Buddha Hall to no one. How do you come to know of this coffered ceiling?", choices: [{label: "Seen in a dream", next: "10a"}, {label: "Heard from artisans", next: "10b"}]},
+                    "10a": { text: "A monk should not speak untruths. If you have time for daydreams, you would be better spent practicing the music.", next: 11 },
+                    "10b": { text: "The construction period is a mere two months, yet the artisans have leisure time to chat with you? If you have time to idle, you would be better spent practicing the music.", next: 11 },
+                    11: { text: "(Whispering) Besides the artisans, you, me, and His Majesty, no one else should know of this coffered ceiling. Speak of it to no one else. This coffered ceiling is not merely an architectural feature; it is a testament to karmic connection. Do you believe in karma?", choices: [{label: "Yes, I do", next: 14}, {label: "I don't understand", next: 14}]},
+                    14: { text: "'Karma' is the primary cause from which all things arise; 'conditions' are the various factors that help the primary cause come to fruition. All things in this world are born from the union of cause and conditions, and cease when those conditions disperse.", next: 15 },
+                    15: { text: "I come from humble beginnings. To make a living in my youth, I was selected to enter the palace as a eunuch. Within the palace, I started from scratch, learning to read and write.", next: 16 },
+                    16: { text: "A person like me, with no connections or support, who wished to survive the open and hidden struggles of the court, had no choice but to be scrupulously dutiful, walking on eggshells every single day.", next: 17 },
+                    17: { text: "As time passed, I gradually gained the trust of the late emperor, who then ordered me to serve the young crown prince in the Eastern Palace.", next: 18 },
+                    18: { text: "I spent my days and nights with the crown prince, caring for him attentively. When he grew a little older, I became his tutor, urging him on in his studies.", next: 19 },
+                    19: { text: "When the crown prince ascended the throne at the tender age of seven, he knew nothing of the palace's dangers. To repay the grace shown to me, I served His Majesty from dawn till dusk, protecting him and ensuring his safety.", next: 20 },
+                    20: { text: "Some say I am arrogant and monopolize power, that I persecute loyal ministers. Others wish nothing more than to see me gone. I admit, in this brutal arena of power, to survive, one sometimes cannot avoid necessary evils.", next: 21 },
+                    21: { text: "Everything I have today was bestowed upon me by the imperial family. To protect His Majesty, I would not hesitate to give my last ounce of strength, even should it cost me my life.", next: 22 },
+                    22: { text: "This coffered ceiling I designed: the five-clawed coiled dragon at its center symbolizes His Majesty. Encircling it are eight smaller swimming dragons, and on the outer ring are the Eight Auspicious Symbols of Tibetan Buddhism. Together, they guard and protect the coiled dragon at the heart.", image: "CeilingInteractive.jpg", next: "end" }
+                }
+            }
+        },
+        zh: {
+            LS: {
+                name: "史克門 (Laurence Sickman)", portrait: "Laurence Sickman_史克门.jpg", startBtn: "與石碑互動", continueBtn: "繼續", nextSteleBtn: "前往劉敦楨石碑",
+                steps: {
+                    0: { text: "有失遠迎，是什麼風把您吹來了？", choices: [{ label: "我今天來看個展覽。", next: "3a" }, { label: "我在尋找通往智慧之路。", next: "3b" }] },
+                    "3a": { text: "那我們算是有共同話題了。我以前在納爾遜·阿特金斯美術館當了很多年策展人。", next: 4 },
+                    "3b": { text: "嗯...說不定您能幫我解一個困擾我多年的問題。我以前在納爾遜·阿特金斯美術館當了很多年策展人。", next: 4 },
+                    4: { text: "您去過我們的中國廟宇展廳嗎？", image: "ChineseTempleRoom.jpg", choices: [{ label: "這是我第一次看到。", next: 6 }, { label: "我去過那個地方。", next: 6 }] },
+                    6: { text: "這個廳對我來說由特殊的意義。牆上的壁畫來自山西廣勝寺，頭頂上的藻井來自北京智化寺。", next: 7 },
+                    7: { text: "是我在1930年代把它們帶到堪薩斯城的。", next: 8 },
+                    8: { text: "那時候我剛大學畢業，拿哈佛燕京學社的獎學金住在北平繼續做研究中國藝術。", next: 9 },
+                    9: { text: "有一天，我以前的老師蘭登·華爾納寫信給我。", next: 10 },
+                    10: { text: "他給我看了一張照片，是建築史學家劉敦楨文章裡附的。", image: "LiuDunzhen_Article.jpg", next: 11 },
+                    11: { text: "智化寺是一座明代的佛寺，離我住的地方不遠。那時候藻井已經被拆下來了，正在找買主。", next: 12 },
+                    12: { text: "華爾納覺得，堪薩斯城正在蓋一座新的博物館，這件藻井非常合適成爲其收藏。", next: 13 },
+                    13: { text: "於是我們在北平一路追蹤線索：頻繁光顧琉璃廠的古董店、到處打聽、請人介紹、在漫長的對話中喝了無數杯茶。", next: 14 },
+                    14: { text: "最後循線找到一個小院子，隔壁還是家棺材鋪。就在那個院子裡，藻井就擺在我眼前。我當場談好價錢，把事情定下來。", image: "CeilingCourtYard.jpg", next: 15 },
+                    15: { text: "之後我去了智化寺一趟，想看清楚——這個藻井原來是裝在哪裡的。", next: 16 },
+                    16: { text: "我永遠不會忘記那個房間：牆上滿滿是數千尊小小的坐佛，像夜空裡的星星。", image: "SmallBuddhas.jpg", next: 17 },
+                    17: { text: "這麼多年過去了，我還是常常夢見那個房間。好像我的一部分，從來沒有真正離開過。", next: 18 },
+                    18: { text: "請跟著地上的線走。它會引導您到第一場夢。在那裡，或許您能幫我看看——我當年沒能看清的事。", next: "end" }
+                }
+            },
+            LD: {
+                name: "劉敦楨 (Liu Dunzhen)", portrait: "LiuDunzhen_Portrait.jpg", startBtn: "與敘事碑互動", continueBtn: "繼續", nextSteleBtn: "前往沈廷芳石碑",
+                steps: {
+                    0: { text: "您看起來有些疑惑，需要我幫忙嗎？", next: 2 },
+                    2: { text: "觀眾：您好，我本來是來看展覽的。剛剛好像夢見了一座佛殿，我變成牆壁上的一尊小佛。", next: 3 },
+                    3: { text: "您說笑了，哪裡有展覽？這裡不就是智化寺的萬佛閣嗎？", next: 4 },
+                    4: { text: "觀眾：（內心：我怎麼會來到智化寺？眼前的這位又是？）", next: 5 },
+                    5: { text: "最近來智化寺的人愈發多了。昨天我還遇到一位美國來的年輕人，名叫史克門，他對中國藝術頗有見解。", next: 6 },
+                    6: { text: "觀眾：（內心：忽然想起，剛才與史克門交談時，他提到過一位研究中國建築史的學者）", next: 7 },
+                    7: { text: "觀眾：請教一下，您莫非是劉敦楨教授？", next: 8 },
+                    8: { text: "正是在下。此次我帶著學生從南京來到北平，主要想實地考察城中的古建築。", next: 9 },
+                    9: { text: "我對智化寺一直很感興趣。它不僅是城內歷史最悠久的官式木構建築，更融合了藏傳佛教與淨土信仰的風格，處處耐人尋味。", next: 10 },
+                    10: { text: "觀眾：可以請您多講講嗎？", next: 11 },
+                    11: { text: "就以我們所在的萬佛閣為例吧。樓下這層叫如來殿，供奉釋迦牟尼佛，還藏有明代宮廷刊刻的佛經，象徵著世間可以觸及的佛法智慧。", next: 12 },
+                    12: { text: "而樓上這層，供奉的是“三身佛”。正中是毗盧佛，為“法身佛”，代表佛法作為抽象真理的存在，須透過理解經藏才能體悟。", next: 13 },
+                    13: { text: "在毗盧佛上方，原本有一座藻井，雕有九龍與藏傳佛教的八種吉祥物，四周更滿佈曼荼羅法咒的天花，共同守護著這片佛國淨土。", next: 14 },
+                    14: { text: "經藏在下、法身在上，藻井居中護持——整座建築因而形成一個完整的信仰空間。可惜的是，藻井已被拆賣，不知如今流落何方……", choices: [{ label: "告訴劉敦楨藻井在堪薩斯城", next: 16 }, { label: "保持沈默", next: 16 }] },
+                    16: { text: "原來如此…（長嘆）希望有朝一日，它能重見光明。若不是當年沈廷芳一紙奏摺，智化寺或可避此劫難。", next: 17 },
+                    17: { text: "若不趕緊行動，我們恐怕將永遠失去這份珍貴的文化遺產。", next: 18 },
+                    18: { text: "我與學生正著手測繪智化寺，計劃製作一個如來殿-萬佛閣的木構剖面模型。不知您是否願意助我們一臂之力？", image: "WanfoPavilion_Model.jpg", choices: [{label: "當然願意", next: "end"}]}
+                }
+            },
+            ST: {
+                name: "沈廷芳 (Shen Tingfang)", portrait: "ShenTingfang_Portrait.jpg", startBtn: "與敘事碑互動", continueBtn: "繼續", nextSteleBtn: "前往王振石碑",
+                steps: {
+                    0: { text: "觀眾：（內心：好像旁邊有人在吟詩）", next: 2 },
+                    2: { text: "“萬叠西山擁帝靑，登樓一望雲冥冥。”", next: 3 },
+                    3: { text: "“長空落日杳無際，塞鴈先秋到薊庭。”", next: 4 },
+                    4: { text: "京城秋高氣爽，最適合登樓遠眺。可惜沒有知己一同欣賞這景色。", next: 5 },
+                    5: { text: "觀眾：（內心：我曾背過一首詩，要不應和一下？）", choices: [{label: "吟詩應和", next: 6}] },
+                    6: { text: "“沙河燈火照山紅，歌鼓喧喧笑語中。”", next: 7 },
+                    7: { text: "“為問少年心在否，角巾欹側鬢如蓬。”", next: 8 },
+                    8: { text: "（拍手）妙啊，這是蘇東坡赴杭州擔任監試時，登上鳳凰山望海樓有感而作。", next: 9 },
+                    9: { text: "我也是杭州人。年少時有志於學問，尤其喜愛詩賦。蒙皇上恩典，入京師翰林院編修《明史》，研究前代君臣治亂的興衰之道。", next: 10 },
+                    10: { text: "後來被派往山東擔任監察御史，負責賑災事務。最近因公事回京，便趁機尋訪古跡，探幽攬勝。", next: 11 },
+                    11: { text: "觀眾：（內心：也許他有智化寺的線索。)", next: 12 },
+                    12: { text: "觀眾：我也喜歡探訪古蹟。請問先生，可曾聽說過智化寺？", next: 13 },
+                    13: { text: "前幾日剛好去了智化寺，竟看見寺內立著王振的木像。百姓們不明就裡，對他頂禮膜拜，實在是讓人痛心！", next: 14 },
+                    14: { text: "於是我就寫了奏摺呈給乾隆皇帝，請求清除他的雕像，以正視聽，端正人心。", next: 15 },
+                    15: { text: "觀眾：（內心：原來他就是改變智化寺命運的清代御史沈廷芳！那王振又是誰？）", next: 16 },
+                    16: { text: "晚輩才疏學淺，不太了解這些往事，願聽先生賜教。", next: 17 },
+                    17: { text: "王振是明朝的一位宦官，篤信佛教。他捐出自己的宅院修建了智化寺，同時也用來供奉自己的祖先。", next: 18 },
+                    18: { text: "王振深得明英宗寵信，後來專權誤國。正統十四年的土木堡之變（1449），他指揮失當，導致明軍全軍覆沒，自己也死於亂軍之中。", next: 19 },
+                    19: { text: "自古以來，宦官一旦專權，百姓就要遭殃。如今智化寺的香火依舊旺盛，難道歷史已被遺忘？", choices: [{ label: "認同沈先生", next: "20a" }, { label: "對寺廟的影響？", next: "20b" }]},
+                    "20a": { text: "有識之士，所見略同。以史為鑑，正是我們這代人的責任。", next: 21 },
+                    "20b": { text: "寺廟本身沒有過錯，但難免受到牽連。若真有什麼影響，我也願意承擔這個責任。", next: 21 },
+                    21: { text: "（從袖中抽出一卷軸）我們萍水相逢，因詩結緣。這卷軸裡收錄了幾首明代文人題詠智化寺的詩作，請你收下吧。", image: "PoetryScroll.jpg", next: "end" }
+                }
+            },
+            WZ: {
+                name: "王振 (Wang Zhen)", portrait: "WangZhen_Portrait.jpg", startBtn: "與石碑互動", continueBtn: "繼續", restartBtn: "重啟旅程",
+                endNote: "請沿著地上的標線走，它會幫您理解我的心意。",
+                steps: {
+                    0: { text: "觀眾：（內心獨白：四周樂聲悠揚，我置身於一群樂僧之間。前方端坐一位錦衣華服的男子。）", next: 2 },
+                    2: { text: "（輕嘆一聲）罷了罷了，這首《中堂曲》是每次禮拜《華嚴寶懺》時必奏之樂，怎到現在還是如此生疏？", next: 3 },
+                    3: { text: "我教給你們的這些曲目，源自宮廷雅樂，講究古樸莊重，半分差池也不容許。", next: 4 },
+                    4: { text: "明日，聖上將賜宮中刊印的《永樂北藏》。我已命工匠在藏殿打造一座八角經櫥，正好安放這套經書。", next: 5 },
+                    5: { text: "屆時謝恩演奏，萬萬不可如今日這般馬虎。你們仔細練習，一個時辰後我來檢查。", next: 6 },
+                    6: { text: "觀眾：（內心獨白：宮廷禮樂、御賜經書... 莫非此人就是創建智化寺的宦官王振？）", next: 7 },
+                    7: { text: "觀眾：請老公公留步。敢問萬佛閣中的九龍藻井，可已完工？", next: 8 },
+                    8: { text: "（緩緩轉身）萬佛閣內的陳設，我從未對外人道過。你是從何得知這座藻井的事？", choices: [{label: "夢中見過", next: "10a"}, {label: "與工匠閒談", next: "10b"}]},
+                    "10a": { text: "出家人不打誑語。若有閒工夫做夢，不如多練練曲子。", next: 11 },
+                    "10b": { text: "工期不過兩個月，工匠還有空閒與你閒聊？若有工夫偷懶，不如多練練曲子。", next: 11 },
+                    11: { text: "（壓低聲音）這座藻井，除了工匠、你、我，便只有聖上知曉。切莫再與他人提起。那座藻井不僅是建築的一部分，更是“因緣”的見證。你相信因緣嗎？", choices: [{label: "相信", next: 14}, {label: "不明白", next: 14}]},
+                    14: { text: "「因」是萬事生起的根本，「緣」是促成其成就的種種條件。世間萬物，無不因緣和合而生，緣盡則散。", next: 15 },
+                    15: { text: "我出身寒微，年少時為求生計，被選入宮中為宦官。在宮中，我從認字開始，一步步學起。", next: 16 },
+                    16: { text: "像我這樣無依無靠之人，要在宮廷的明爭暗鬥中立足，唯有謹言慎行，步步為營。", next: 17 },
+                    17: { text: "日久天長，漸漸得先皇信任，命我入東宮，侍奉年幼的太子。", next: 18 },
+                    18: { text: "我與太子朝夕相伴，悉心照料。待他稍長，又擔當教導之責，督促他讀書進學。", next: 19 },
+                    19: { text: "太子登基時，年僅七歲，尚不知宮廷險惡。為報知遇之恩，我日夜守護在皇上身邊。", next: 20 },
+                    20: { text: "有人說我專權跋扈，排擠忠良，也有人恨不得將我剷除。我承認，在這權力場上，為求自保，難免行「必要之惡」。", next: 21 },
+                    21: { text: "我今日一切，皆為皇家所賜。為護皇上周全，縱使肝腦塗地，也在所不惜。", next: 22 },
+                    22: { text: "我親手設計的這座藻井，中心為五爪金龍，象徵聖上；四周環繞八條游龍，外圍再飾以藏傳佛教的八吉祥寶，寓意眾星拱月，護佑中央。", image: "CeilingInteractive.jpg", next: "end" }
+                }
+            }
+        },
+        sc: {
+            LS: {
+                name: "史克门 (Laurence Sickman)", portrait: "Laurence Sickman_史克门.jpg", startBtn: "与石碑互动", continueBtn: "继续", nextSteleBtn: "前往刘敦桢石碑",
+                steps: {
+                    0: { text: "有失远迎，是什么风把您吹来了？", choices: [{ label: "我今天来看个展览。", next: "3a" }, { label: "我在寻找通往智慧之路。", next: "3b" }] },
+                    "3a": { text: "那我们算是有共同话题了。我以前在纳尔逊·阿特金斯美术馆当了很多年策展人。", next: 4 },
+                    "3b": { text: "嗯...说不定您能帮我解一个困扰我多年的问题。我以前在纳尔逊·阿特金斯美术馆当了很多年策展人。", next: 4 },
+                    4: { text: "您去过我们的中国庙宇展厅吗？", image: "ChineseTempleRoom.jpg", choices: [{ label: "这是我第一次看到。", next: 6 }, { label: "我去过那个地方。", next: 6 }] },
+                    6: { text: "这个厅对我由特殊的意义。墙上的壁画来自山西广胜寺，头顶上的藻井来自北京智化寺。", next: 7 },
+                    7: { text: "是我在1930年代把它们带到堪萨斯城的。", next: 8 },
+                    8: { text: "那时候我刚大学毕业，拿哈佛燕京学社的奖学金住在北平继续做研究中国艺术。", next: 9 },
+                    9: { text: "有一天，我以前老师兰登·华尔纳写信给我。", next: 10 },
+                    10: { text: "他给我看了一张照片，是建筑史学家刘敦桢文章里附的。", image: "LiuDunzhen_Article.jpg", next: 11 },
+                    11: { text: "智化寺是一座明代的佛寺，离我住的地方不远。那时候藻井已经被拆下来了，正在找买主。", next: 12 },
+                    12: { text: "华尔纳觉得，堪萨斯城正在盖一座新的博物馆，这件藻井非常合适成为其收藏。", next: 13 },
+                    13: { text: "于是我们在北平一路追踪线索：频繁光顾琉璃厂的古董店、到处打听、请人介绍、在漫长的对话中喝了无数杯茶。", next: 14 },
+                    14: { text: "最后循线找到一个小院子，隔壁还是家棺材铺。就在那个院子里，藻井就摆在我眼前。我当场谈好价钱，把事情定下来。", image: "CeilingCourtYard.jpg", next: 15 },
+                    15: { text: "之后我去了智化寺一趟，想看清楚——这个藻井原来是装在哪里的。", next: 16 },
+                    16: { text: "我永远不会忘记那个房间：墙上满满是数千尊小小的坐佛，像夜空里的星星。", image: "SmallBuddhas.jpg", next: 17 },
+                    17: { text: "这么多年过去了，我还是常常梦见那个房间。好像我的一部分，从来没有真正离开过。", next: 18 },
+                    18: { text: "请跟着地上的线走。它会引导您到第一场梦。在那里，或许您能帮我看看——我当年没能看清的事。", next: "end" }
+                }
+            },
+            LD: {
+                name: "刘敦桢 (Liu Dunzhen)", portrait: "LiuDunzhen_Portrait.jpg", startBtn: "与叙事碑互动", continueBtn: "继续", nextSteleBtn: "前往沈廷芳石碑",
+                steps: {
+                    0: { text: "您看起来有些疑惑，需要我帮忙吗？", next: 2 },
+                    2: { text: "观众：您好，我本来是来看展览的。刚刚好像梦见了一座佛殿，我变成墙壁上的一尊小佛。", next: 3 },
+                    3: { text: "您说笑了，哪里有展览？这里不就是智化寺的万佛阁吗？", next: 4 },
+                    4: { text: "观众：（内心：我怎么会来到智化寺？眼前的这位又是？）", next: 5 },
+                    5: { text: "最近来智化寺的人愈发多了。昨天我还遇到一位美国来的年轻人，名叫史克门，他对中国艺术颇有见解。", next: 6 },
+                    6: { text: "观众：（内心：忽然想起，刚才与史克门交谈时，他提到过一位研究中国建筑史的学者）", next: 7 },
+                    7: { text: "观众：请教一下，您莫非是刘敦桢教授？", next: 8 },
+                    8: { text: "正是在下。此次我带着学生从南京来到北平，主要想实地考察城中的古建筑。", next: 9 },
+                    9: { text: "我对智化寺一直很感兴趣。它不仅是城内历史最悠久的官式木构建筑，更融合了藏传佛教与净土信仰的风格，处处耐人寻味。", next: 10 },
+                    10: { text: "观众：可以请您多讲讲吗？", next: 11 },
+                    11: { text: "就以我们所在的万佛阁为例吧。楼下这层叫如来殿，供奉释迦牟尼佛，还藏有明代宫廷刊刻的佛经，象征着世间可以触及的佛法智慧。", next: 12 },
+                    12: { text: "而楼上这层，供奉的是“三身佛”。正中是毗卢佛，为“法身佛”，代表佛法作为抽象真理的存在，须通过理解经藏才能体悟。", next: 13 },
+                    13: { text: "在毗卢佛上方，原本有一座藻井，雕有九龙与藏传佛教的八种吉祥物，四周更布满曼荼罗法咒的天花，共同守护着这片佛国净土。", next: 14 },
+                    14: { text: "经藏在下、法身在上，藻井居中护持——整座建筑因而形成一个完整的信仰空间。可惜的是，藻井已被拆卖，不知如今流落何方……", choices: [{ label: "告诉刘敦桢藻井在堪萨斯城", next: 16 }, { label: "保持沉默", next: 16 }] },
+                    16: { text: "原来如此……（长叹）希望有朝一日，它能重见光明。若不是当年沈廷芳一纸奏折，智化寺或可避此劫难。", next: 17 },
+                    17: { text: "若不赶紧行动，我们恐怕将永远失去这份珍贵的文化遗产。", next: 18 },
+                    18: { text: "我与学生正着手测绘智化寺，计划制作一个如来殿-万佛阁的木构剖面模型。不知您是否愿意助我们一臂之力？", image: "WanfoPavilion_Model.jpg", choices: [{label: "当然愿意", next: "end"}]}
+                }
+            },
+            ST: {
+                name: "沈廷芳 (Shen Tingfang)", portrait: "ShenTingfang_Portrait.jpg", startBtn: "与叙事碑互动", continueBtn: "继续", nextSteleBtn: "前往王振石碑",
+                steps: {
+                    0: { text: "观众：（内心：好像旁边有人在吟诗）", next: 2 },
+                    2: { text: "“万叠西山拥帝青，登楼一望云冥冥。”", next: 3 },
+                    3: { text: "“长空落日杳无际，塞雁先秋到蓟庭。”", next: 4 },
+                    4: { text: "京城秋高气爽，最适合登楼远眺。可惜没有知己一同欣赏这景色。", next: 5 },
+                    5: { text: "观众：（内心：我曾背过一首诗，要不应和一下？）", choices: [{label: "吟诗应和", next: 6}] },
+                    6: { text: "“沙河灯火照山红，歌鼓喧喧笑语中。”", next: 7 },
+                    7: { text: "“为问少年心在否，角巾欹侧鬓如蓬。”", next: 8 },
+                    8: { text: "（拍手）妙啊，这是苏东坡赴杭州担任监试时，登上凤凰山望海楼有感而作。", next: 9 },
+                    9: { text: "我也是杭州人。年少时有志于学问，尤其喜爱诗赋。蒙皇上恩典，入京师翰林院编修《明史》，研究前代君臣治乱的兴衰之道。", next: 10 },
+                    10: { text: "后来被派往山东担任监察御史，负责赈灾事务。最近因公事回京，便趁机寻访古迹，探幽揽胜。", next: 11 },
+                    11: { text: "观众：（内心：也许他有智化寺的线索。）", next: 12 },
+                    12: { text: "观众：我也喜欢探访古迹。请问先生，可曾听说过智化寺？", next: 13 },
+                    13: { text: "前几日刚好去了智化寺，竟看见寺内立着王振的木像。百姓们不明就里，对他顶礼膜拜，实在是让人痛心！", next: 14 },
+                    14: { text: "于是我就写了奏折呈给乾隆皇帝，请求清除他的雕像，以正视听，端正人心。", next: 15 },
+                    15: { text: "观众：（内心：原来他就是改变智化寺命运的清代御史沈廷芳！那王振又是谁？）", next: 16 },
+                    16: { text: "晚辈才疏学浅，不太了解这些往事，愿听先生赐教。", next: 17 },
+                    17: { text: "王振是明朝的一位宦官，笃信佛教。他捐出自己的宅院修建了智化寺，同时也用来供奉自己的祖先。", next: 18 },
+                    18: { text: "王振深得明英宗宠信，后来专权误国。正统十四年的土木堡之变（1449），他指挥失当，导致明军全军覆没，自己也死于乱军之中。", next: 19 },
+                    19: { text: "自古以来，宦官一旦专权，百姓就要遭殃。如今智化寺的香火依旧旺盛，难道历史已被遗忘？", choices: [{ label: "认同沈先生", next: "20a" }, { label: "对寺庙的影响？", next: "20b" }]},
+                    "20a": { text: "有识之士，所见略同。以史为鉴，正是我们这代人的责任。", next: 21 },
+                    "20b": { text: "寺庙本身没有过错，但难免受到牵连。若真有什么影响，我也愿意承担这个责任。", next: 21 },
+                    21: { text: "（从袖中抽出一卷轴）我们萍水相逢，因诗结缘。这卷轴里收录了几首明代文人题咏智化寺的诗作，请你收下吧。", image: "PoetryScroll.jpg", next: "end" }
+                }
+            },
+            WZ: {
+                name: "王振 (Wang Zhen)", portrait: "WangZhen_Portrait.jpg", startBtn: "与石碑互动", continueBtn: "继续", restartBtn: "重启旅程",
+                endNote: "请沿着地上的标线走，它会帮您理解我的心意。",
+                steps: {
+                    0: { text: "观众：（内心独白：四周乐声悠扬，我置身于一群乐僧之间。前方端坐一位锦衣华服的男子。）", next: 2 },
+                    2: { text: "（轻叹一声）罢了罢了，这首《中堂曲》是每次礼拜《华严宝忏》时必奏之乐，怎到现在还是如此生疏？", next: 3 },
+                    3: { text: "我教给你们的这些曲目，源自宫廷雅乐，讲究古朴庄重，半分差池也不容许。", next: 4 },
+                    4: { text: "明日，圣上将赐宫中刊印的《永乐北藏》。我已命工匠在藏殿打造一座八角经橱，正好安放这套经书。", next: 5 },
+                    5: { text: "届时谢恩演奏，万万不可如今日这般马虎。你们仔细练习，一个时辰后我来检查。", next: 6 },
+                    6: { text: "观众：（内心独白：宫廷礼乐、御赐经书... 莫非此人就是创建智化寺的宦官王振？）", next: 7 },
+                    7: { text: "观众：请老公公留步. 敢问万佛阁中的九龙藻井，可已完工？", next: 8 },
+                    8: { text: "（缓缓转身）万佛阁内的陈设，我从未对外人道过. 你是从何得知这座藻井的事？", choices: [{label: "梦中见过", next: "10a"}, {label: "闲谈得知", next: "10b"}]},
+                    "10a": { text: "出家人不打诳语. 若有闲工夫做梦，不如多练练曲子。", next: 11 },
+                    "10b": { text: "工期不过两个月，工匠还有空闲与你闲聊？若有工夫偷懒，不如多练练曲子。", next: 11 },
+                    11: { text: "（压低声音）这座藻井，除了工匠、你、我，便只有圣上知晓. 切莫再与他人提起. 那座藻井不仅是建筑的一部分，更是“因缘”的见证. 你相信因缘吗？", choices: [{label: "相信", next: 14}, {label: "不明白", next: 14}]},
+                    14: { text: "“因”是万事生起的根本，“缘”是促成其成就的种种条件. 世间万物，无不因缘和合而生，缘尽则散。", next: 15 },
+                    15: { text: "我出身寒微，年少时为求生计，被选入宫中为宦官. 在宫中，我从认字开始，一步步学起。", next: 16 },
+                    16: { text: "像我这样无依无靠之人，要在宫廷的明争暗斗中立足，唯有谨言慎行，步步为营。", next: 17 },
+                    17: { text: "日久天长，渐渐得先皇信任，命我入东宫，侍奉年幼的太子。", next: 18 },
+                    18: { text: "我与太子朝夕相伴，悉心照料. 待他稍长，又担当教导之责，督促他读书进学。", next: 19 },
+                    19: { text: "太子登基时，年仅七岁，尚不知宫廷险恶. 为报知遇之恩，我日夜守护在皇上身边。", next: 20 },
+                    20: { text: "有人说我专权跋扈，排挤忠良，也有人恨不得将我铲除. 我承认，在这权力场上，为求自保，难免行「必要之恶」。", next: 21 },
+                    21: { text: "我今日一切，皆为皇家所赐. 为护皇上周全，纵使肝脑涂地，也在所不惜。", next: 22 },
+                    22: { text: "我亲手设计的这座藻井，中心为五爪金龙，象征圣上；四周环绕八条游龙，外围再饰以藏传佛教的八吉祥宝，寓意众星拱月，护佑中央。", image: "CeilingInteractive.jpg", next: "end" }
+                }
+            }
+        }
+    };
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        actions.innerHTML = '';
+        const btn = document.createElement('button');
+        btn.innerText = data[currentLang][currentCharacter].startBtn;
+        btn.onclick = beginInteraction;
+        actions.appendChild(btn);
+
+        let quietText = "The gallery is quiet.";
+        if (lang === 'zh') quietText = "展廳內一片靜謐。";
+        if (lang === 'sc') quietText = "展厅内一片静谧。";
+
+        textTarget.innerText = quietText;
+        textTarget.classList.add('show-text');
+    }
+
+    function beginInteraction() {
+        mainImg.classList.add('dimmed');
+        mainImg.src = data[currentLang][currentCharacter].portrait;
+        nameTag.innerText = data[currentLang][currentCharacter].name;
+        setTimeout(() => {
+            mainImg.classList.remove('dimmed');
+            nameTag.style.opacity = "1";
+            renderStep(0);
+        }, 500);
+    }
+
+    function renderStep(stepKey) {
+        if (stepKey === "end") {
+            handleEndState();
+            return;
+        }
+        const stepData = data[currentLang][currentCharacter].steps[stepKey];
+        actions.innerHTML = '';
+        textTarget.classList.remove('show-text');
+        setTimeout(() => {
+            textTarget.innerText = stepData.text;
+            if (stepData.image) {
+                historyImg.src = stepData.image;
+                historyDisplay.style.display = 'flex';
+                mainImg.style.height = "120px";
+            } else {
+                historyDisplay.style.display = 'none';
+                mainImg.style.height = "100%";
+            }
+            textTarget.classList.add('show-text');
+            if (stepData.choices) {
+                stepData.choices.forEach(c => {
+                    const btn = document.createElement('button');
+                    btn.innerText = c.label;
+                    btn.onclick = () => renderStep(c.next);
+                    actions.appendChild(btn);
+                });
+            } else {
+                const btn = document.createElement('button');
+                btn.innerText = data[currentLang][currentCharacter].continueBtn || "Continue";
+                btn.onclick = () => renderStep(stepData.next);
+                actions.appendChild(btn);
+            }
+        }, 400);
+    }
+
+    function handleEndState() {
+        textTarget.classList.remove('show-text');
+        historyDisplay.style.display = 'none';
+        mainImg.style.height = "250px";
+        
+        const nextMap = { 'LS': 'LD', 'LD': 'ST', 'ST': 'WZ' };
+        
+        if (nextMap[currentCharacter]) {
+            mainImg.src = (currentCharacter === 'LS') ? "End_SickmanStele.jpg" : data[currentLang][currentCharacter].portrait;
+            nameTag.style.opacity = "0";
+            setTimeout(() => {
+                const btn = document.createElement('button');
+                btn.innerText = data[currentLang][currentCharacter].nextSteleBtn;
+                btn.onclick = () => {
+                    currentCharacter = nextMap[currentCharacter];
+                    beginInteraction();
+                };
+                actions.innerHTML = '';
+                actions.appendChild(btn);
+
+                let resonanceText = "The resonance of history pulls you further...";
+                if (currentLang === 'zh') resonanceText = "歷史的共鳴引領您走向深處...";
+                if (currentLang === 'sc') resonanceText = "历史的共鸣引领您走向深处...";
+
+                textTarget.innerText = resonanceText;
+                textTarget.classList.add('show-text');
+            }, 500);
+        } else {
+            nameTag.style.opacity = "0";
+            setTimeout(() => {
+                let originText = "The origin is revealed.";
+                if (currentLang === 'zh') originText = "萬物皆有其源。";
+                if (currentLang === 'sc') originText = "万物皆有其源。";
+
+                textTarget.innerText = originText;
+                textTarget.classList.add('show-text');
+                endInstruct.innerText = data[currentLang][currentCharacter].endNote;
+                endInstruct.style.display = 'block';
+                const btn = document.createElement('button');
+                btn.innerText = data[currentLang][currentCharacter].restartBtn || "Restart";
+                btn.onclick = () => location.reload();
+                actions.innerHTML = '';
+                actions.appendChild(btn);
+            }, 500);
+        }
+    }
+</script>
+
+</body>
+</html>
