@@ -152,9 +152,58 @@
             border-top: 1px solid #333;
             padding-top: 10px;
         }
+
+        /* Lightbox for zoomable images */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            overflow-y: auto;
+            text-align: center;
+            padding-top: 60px;
+            box-sizing: border-box;
+        }
+
+        #lightbox img {
+            max-width: 75%;
+            margin-bottom: 40px;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+            border: 1px solid #444;
+            transform-origin: center top;
+        }
+
+        #lightbox img.zoomed {
+            transform: scale(1.6);
+            cursor: zoom-out;
+            z-index: 10001;
+            position: relative;
+        }
+
+        .close-lb {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            color: var(--gold);
+            font-size: 50px;
+            cursor: pointer;
+            z-index: 10002;
+            font-weight: bold;
+            user-select: none;
+            line-height: 1;
+        }
+
+        .close-lb:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+
+<div id="lightbox" onclick="closeLightbox()"></div>
 
 <div id="kiosk-container">
     <h1 id="main-title">
@@ -195,6 +244,7 @@
     const historyDisplay = document.getElementById('history-display');
     const historyImg = document.getElementById('history-img');
     const endInstruct = document.getElementById('end-instruction');
+    const lightbox = document.getElementById('lightbox');
 
     let currentLang = 'en';
     let currentCharacter = 'LS';
@@ -245,7 +295,7 @@
                     14: { text: "Scriptures below, the Dharma-body above, and the coffered ceiling in between as a protective canopy—this building formed a complete space of faith. But sadly, the coffered ceiling has been dismantled and sold. I have no idea where it has drifted to now…", choices: [{ label: "Tell him it is at the Nelson-Atkins Museum", next: 16 }, { label: "Remain silent", next: 16 }] },
                     16: { text: "(sighs deeply) I only hope that one day it may see the light again. If Shen Tingfang had not submitted his memorial, perhaps Zhihua Temple would not have fallen into such decline.", next: 17 },
                     17: { text: "If we don’t act quickly, we may lose this precious cultural heritage forever.", next: 18 },
-                    18: { text: "My students and I are surveying Zhihua Temple, and we plan to build a wooden sectional model of the Tathāgata Hall and the Wanfo Pavilion. Would you be willing to lend us a hand?", image: "WanfoPavilion_Model.jpg", choices: [{label: "Of course", next: "end"}]}
+                    18: { text: "My students and I are surveying Zhihua Temple, and we plan to build a wooden sectional model of the Tathāgata Hall and the Wanfo Pavilion. Would you be willing to lend us a hand?", choices: [{label: "Of course", next: "end"}]}
                 }
             },
             ST: {
@@ -272,7 +322,7 @@
                     19: { text: "Since ancient times, when eunuchs seize power, the people suffer. And now, the incense at Zhihua Temple still burns bright—is this not a great injustice of history?", choices: [{ label: "Agree with Shen Tingfang", next: "21a" }, { label: "What about the temple's fate?", next: "21b" }]},
                     "21a": { text: "Great minds think alike. Taking history as a mirror—that is precisely our generation's responsibility.", next: 22 },
                     "21b": { text: "The temple itself bears no fault, yet it is inevitably affected. If any consequences arise, I am willing to bear that responsibility.", next: 22 },
-                    22: { text: "(Produces a scroll from his sleeve) We are strangers who met by chance, connected through poetry. This scroll contains several poems by Ming dynasty literati inscribed for Zhihua Temple. Please accept it.", image: "PoetryScroll.jpg", next: "end" }
+                    22: { text: "(Produces a scroll from his sleeve) We are strangers who met by chance, connected through poetry. This scroll contains several poems by Ming dynasty literati inscribed for Zhihua Temple. Please accept it.", next: "end" }
                 }
             },
             WZ: {
@@ -351,7 +401,7 @@
                     14: { text: "經藏在下、法身在上，藻井居中護持——整座建築因而形成一個完整的信仰空間。可惜的是，藻井已被拆賣，不知如今流落方……", choices: [{ label: "告訴劉敦楨藻井在堪薩斯城", next: 16 }, { label: "保持沈默", next: 16 }] },
                     16: { text: "原來如此…（長嘆）希望有朝一日，它能重見光明。若不是當年沈廷芳一紙奏摺，智化寺或可避此劫難。", next: 17 },
                     17: { text: "若不趕緊行動，我們恐怕將永遠失去這份珍貴的文化遺產。", next: 18 },
-                    18: { text: "我與學生正著手測繪智化寺，計劃製作一個如來殿-萬佛閣的木構剖面模型。不知您是否願意助我們一臂之力？", image: "WanfoPavilion_Model.jpg", choices: [{label: "當然願意", next: "end"}]}
+                    18: { text: "我與學生正著手測繪智化寺，計劃製作一個如來殿-萬佛閣的木構剖面模型。不知您是否願意助我們一臂之力？", choices: [{label: "當然願意", next: "end"}]}
                 }
             },
             ST: {
@@ -378,7 +428,7 @@
                     19: { text: "自古以來，宦官一旦專權，百姓就要遭殃. 如今智化寺的香火依舊旺盛，難道歷史已被遺忘？", choices: [{ label: "認同沈先生", next: "20a" }, { label: "對寺廟的影響？", next: "20b" }]},
                     "20a": { text: "有識之士，所見略同. 以史為鑑，正是我們這代人的責任。", next: 21 },
                     "20b": { text: "寺廟本身沒有過錯，但難免受到牽連。若真有什麼影響，我也願意承擔這個責任。", next: 21 },
-                    21: { text: "（從袖中抽出一卷軸）我們萍水相逢，因詩結緣. 這卷軸裡收錄了幾首明代文人題詠智化寺的詩作，請你收下吧。", image: "PoetryScroll.jpg", next: "end" }
+                    21: { text: "（從袖中抽出一卷軸）我們萍水相逢，因詩結緣. 這卷軸裡收錄了幾首明代文人題詠智化寺的詩作，請你收下吧。", next: "end" }
                 }
             },
             WZ: {
@@ -421,7 +471,7 @@
                     "3a": { text: "那我们算是有共同话题了。我以前在纳尔逊·阿特金斯美术馆当了很多年策展人。", next: 4 },
                     "3b": { text: "嗯...说不定您能帮我解一个困扰我多年的问题. 我以前在纳尔逊·阿特金斯美术馆当了很多年策展人。", next: 4 },
                     4: { text: "您去过我们的中国庙宇展厅吗？", image: "ChineseTempleRoom.jpg", choices: [{ label: "这是我第一次看到。", next: 6 }, { label: "我去过那个地方。", next: 6 }] },
-                    6: { text: "这个厅对我有特殊的意义. 墙上的壁画来自山西广胜寺，头顶上的藻井来自北京智化寺。", next: 7 },
+                    6: { text: "这个厅对我由特殊的意义. 墙上的壁画来自山西广胜寺，头顶上的藻井来自北京智化寺。", next: 7 },
                     7: { text: "是我在1930年代把它们带到堪萨斯城的。", next: 8 },
                     8: { text: "那时候我刚大学毕业，拿哈佛燕京学社的奖学金住在北平继续做研究中国艺术。", next: 9 },
                     9: { text: "有一天，我以前老师兰登·华尔纳写信给我。", next: 10 },
@@ -455,7 +505,7 @@
                     14: { text: "经藏在下、法身在上，藻井居中护持——整座建筑因而形成一个完整的信仰空间. 可惜的是，藻井已被拆卖，不知如今流落何方……", choices: [{ label: "告诉刘敦桢藻井在堪萨斯城", next: 16 }, { label: "保持沉默", next: 16 }] },
                     16: { text: "原来如此……（长叹）希望有朝一日，它能重见光明. 若不是当年沈廷芳一纸奏折，智化寺或可避此劫难。", next: 17 },
                     17: { text: "若不赶紧行动，我们恐怕将永远失去这份珍贵的文化遗产。", next: 18 },
-                    18: { text: "我与学生正着手测绘智化寺，计划制作一个如来殿-万佛阁的木构剖面模型. 不知您是否愿意助我们一臂之力？", image: "WanfoPavilion_Model.jpg", choices: [{label: "当然愿意", next: "end"}]}
+                    18: { text: "我与学生正着手测绘智化寺，计划制作一个如来殿-万佛阁的木构剖面模型. 不知您是否愿意助我们一臂之力？", choices: [{label: "当然愿意", next: "end"}]}
                 }
             },
             ST: {
@@ -466,8 +516,8 @@
                     3: { text: "“长空落日杳无际，塞雁先秋到蓟庭。”", next: 4 },
                     4: { text: "京城秋高气爽，最适合登楼远眺. 可惜没有知己一同欣赏这景色。", next: 5 },
                     5: { text: "观众：（内心：我曾背过一首诗，要不应和一下？）", choices: [{label: "吟诗应和", next: 6}] },
-                    6: { text: "“沙河灯火照山红，歌鼓喧喧笑语中。”", next: 7 },
-                    7: { text: "“为问少年心在否，角巾欹侧鬓如蓬。”", next: 8 },
+                    6: { text: "观众：（“沙河灯火照山红，歌鼓喧喧笑语中。”", next: 7 },
+                    7: { text: "观众：（“为问少年心在否，角巾欹侧鬓如蓬。”", next: 8 },
                     8: { text: "（拍手）妙啊，这是苏东坡赴杭州担任监试时，登上凤凰山望海楼有感而作。", next: 9 },
                     9: { text: "我也是杭州人. 年少时有志于学问，尤其喜爱诗赋. 蒙皇上恩典，入京师翰林院编修《明史》，研究前代君臣治乱的兴衰之道。", next: 10 },
                     10: { text: "后来被派往山东担任监察御史，负责赈灾事务. 最近因公事回京，便趁机寻访古迹，探幽揽胜。", next: 11 },
@@ -482,7 +532,7 @@
                     19: { text: "自古以来，宦官一旦专权，百姓就要遭殃. 如今智化寺的香火依旧旺盛，难道历史已被遗忘？", choices: [{ label: "认同沈先生", next: "20a" }, { label: "对寺庙的影响？", next: "20b" }]},
                     "20a": { text: "有识之士，所见略同. 以史为鉴，正是我们这代人的责任。", next: 21 },
                     "20b": { text: "寺庙本身没有过错，但难免受到牵连. 若真有什么影响，我也愿意承担这个责任。", next: 21 },
-                    21: { text: "（从袖中抽出一卷轴）我們萍水相逢，因詩結緣. 這卷軸裡收錄了几首明代文人题咏智化寺的诗作，请你收下吧。", image: "PoetryScroll.jpg", next: "end" }
+                    21: { text: "（从袖中抽出一卷轴）我們萍水相逢，因詩結緣. 這卷軸裡收錄了几首明代文人题咏智化寺的诗作，请你收下吧。", next: "end" }
                 }
             },
             WZ: {
@@ -490,29 +540,29 @@
                 endNote: "请沿着地上的标线走，它会帮您理解我的心意。",
                 steps: {
                     0: { text: "观众：（内心独白：四周乐声悠扬，我置身于一群乐僧之间。前方端坐一位锦衣华服的男子。）", next: 2 },
-                    2: { text: "（轻叹一声）罢了罢了，这首《中堂曲》是每次礼拜《华严宝忏》时必奏之乐，怎到现在还是如此生疏？", next: 3 },
-                    3: { text: "我教给你们的这些曲目，源自宫廷雅乐，讲究古朴庄重，半分差池也不容许。", next: 4 },
-                    4: { text: "明日，圣上将赐宫中刊印的《永乐北藏》。我已命工匠在藏殿打造一座八角经橱，正好安放这套经书。", next: 5 },
-                    5: { text: "届时谢恩演奏，万万不可如今日这般马虎。你们仔细练习，一个时辰后我来检查。", next: 6 },
+                    2: { text: "WZ：（轻叹一声）罢了罢了，这首《中堂曲》是每次礼拜《华严宝忏》时必奏之乐，怎到现在还是如此生疏？", next: 3 },
+                    3: { text: "WZ：我教给你们的这些曲目，源自宫廷雅乐，讲究古朴庄重，半分差池也不容许。", next: 4 },
+                    4: { text: "WZ：明日，圣上将赐宫中刊印的《永乐北藏》。我已命工匠在藏殿打造一座八角经橱，正好安放这套经书。", next: 5 },
+                    5: { text: "WZ：届时谢恩演奏，万万不可如今日这般马虎。你们仔细练习，一个时辰后我来检查。", next: 6 },
                     6: { text: "观众：（内心独白：宫廷礼乐、御赐经书... 莫非此人就是创建智化寺的宦官王振？）", next: 7 },
                     7: { text: "观众：请老公公留步。敢问万佛阁中的九龙藻井，可已完工？", next: 8 },
                     8: { text: "（缓缓转身，目光在观众身上打量片刻）万佛阁内的陈设，我从未对外人道过。你是从何得知这座藻井的事？", choices: [{label: "梦中见过", next: "10a"}, {label: "与工匠闲谈", next: "10b"}]},
-                    "10a": { text: "出家人不打诳语。若有闲工夫做梦，不如多练练曲子。", next: 11 },
-                    "10b": { text: "工期不过两个月，工匠还有空闲与你闲聊？若有工夫偷懒，不如多练练曲子。", next: 11 },
-                    11: { text: "（男人环顾四周，压低声音说）这座藻井，除了工匠、你、我，便只有圣上知晓。切莫再与他人提起。", next: 12 },
-                    12: { text: "那座藻井不仅是建筑的一部分，更是\"因缘\"的见证。你相信因缘吗？", choices: [{label: "我相信", next: 14}, {label: "我不太明白", next: 14}]},
-                    14: { text: "「因」是万事生起的根本，「缘」是促成其成就的种种条件。世间万物，无不因缘和合而生，缘尽则散。", next: 15 },
-                    15: { text: "我出身寒微，年少时为求生计，被选入宫中为宦官。在宫中，我从认字开始，一步步学起。", next: 16 },
-                    16: { text: "像我这样无依无靠之人，要在宫廷的明争暗斗中立足，唯有谨言慎行，步步为营。", next: 17 },
-                    17: { text: "日久天长，渐渐得先皇信任，命我入东宫，侍奉年幼的太子。", next: 18 },
-                    18: { text: "我与太子朝夕相伴，悉心照料。待他稍长，又担当教导之责，督促他读书进学。", next: 19 },
-                    19: { text: "太子登基时，年仅七岁，尚不知宫廷险恶。为报知遇之恩，我日夜守护在皇上身边。", next: 20 },
-                    20: { text: "有人说我专权跋扈，排挤忠良，也有人恨不得将我铲除。我承认，在这权力场上，为求自保，难免行「必要之恶」。", next: 21 },
-                    21: { text: "我今日一切，皆为皇家所赐。为护皇上周全，纵使肝脑涂地，也在所不惜。", next: 22 },
-                    22: { text: "我亲手设计的这座藻井，中心为五爪金龙，象征圣上；四周环绕八条游龙，外围再饰以藏传佛教的八吉祥宝，寓意众星拱月，护佑皇上。", image: "WanfoCeiling.jpg", next: 23 },
-                    23: { text: "（停顿片刻，目光落在观众脸上）你觉得后人能从这座藻井，感受我的心意吗？", choices: [{label: "我想后人会先看见藻井的美", next: "25a"}, {label: "我想后人会先评判你的是非功过", next: "25b"}]},
-                    "25a": { text: "（感慨）木有朽时，彩有褪日，美好总是转瞬即逝。座方藻井的美若能被更多人看见，也不枉费我的心意。", next: "end" },
-                    "25b": { text: "（感慨）人活一世，身不由己，我已准备好接受历史的评说。唯独盼后人能替我护住这方藻井，也不枉我一番用心。", next: "end" }
+                    "10a": { text: "WZ: 出家人不打诳语。若有闲工夫做梦，不如多练练曲子。", next: 11 },
+                    "10b": { text: "WZ: 工期不过两个月，工匠还有空闲与你闲聊？若有工夫偷懒，不如多练练曲子。", next: 11 },
+                    11: { text: "WZ：（男人环顾四周，压低声音说）这座藻井，除了工匠、你、我，便只有圣上知晓。切莫再与他人提起。", next: 12 },
+                    12: { text: "WZ：那座藻井不仅是建筑的一部分，更是\"因缘\"的见证。你相信因缘吗？", choices: [{label: "我相信", next: 14}, {label: "我不太明白", next: 14}]},
+                    14: { text: "WZ：「因」是万事生起的根本，「缘」是促成其成就的种种条件。世间万物，无不因缘和合而生，缘尽则散。", next: 15 },
+                    15: { text: "WZ：我出身寒微，年少时为求生计，被选入宫中为宦官。在宫中，我从认字开始，一步步学起。", next: 16 },
+                    16: { text: "WZ：像我这样无依无靠之人，要在宫廷的明争暗斗中立足，唯有谨言慎行，步步为营。", next: 17 },
+                    17: { text: "WZ：日久天长，渐渐得先皇信任，命我入东宫，侍奉年幼的太子。", next: 18 },
+                    18: { text: "WZ：我与太子朝夕相伴，悉心照料。待他稍长，又担当教导之责，督促他读书进学。", next: 19 },
+                    19: { text: "WZ：太子登基时，年仅七岁，尚不知宫廷险恶。为报知遇之恩，我日夜守护在皇上身边。", next: 20 },
+                    20: { text: "WZ：有人说我专权跋扈，排挤忠良，也有人恨不得将我铲除。我承认，在这权力场上，为求自保，难免行「必要之恶」。", next: 21 },
+                    21: { text: "WZ：我今日一切，皆为皇家所赐。为护皇上周全，纵使肝脑涂地，也在所不惜。", next: 22 },
+                    22: { text: "WZ: 我亲手设计的这座藻井，中心为五爪金龙，象征圣上；四周环绕八条游龙，外围再饰以藏传佛教的八吉祥宝，寓意众星拱月，护佑皇上。", image: "WanfoCeiling.jpg", next: 23 },
+                    23: { text: "WZ：（停顿片刻，目光落在观众脸上）你觉得后人能从这座藻井，感受我的心意吗？", choices: [{label: "我想后人会先看见藻井的美", next: "25a"}, {label: "我想后人会先评判你的是非功过", next: "25b"}]},
+                    "25a": { text: "WZ：（感慨）木有朽时，彩有褪日，美好总是转瞬即逝。座方藻井的美若能被更多人看见，也不枉费我的心意。", next: "end" },
+                    "25b": { text: "WZ：（感慨）人活一世，身不由己，我已准备好接受历史的评说。唯独盼后人能替我护住这方藻井，也不枉我一番用心。", next: "end" }
                 }
             }
         }
@@ -606,6 +656,28 @@
         }, 400);
     }
 
+    function openLightbox(images) {
+        lightbox.innerHTML = '<span class="close-lb" onclick="closeLightbox()">&times;</span>';
+        
+        images.forEach(src => {
+            let img = document.createElement('img');
+            img.src = src;
+            img.onclick = (e) => {
+                e.stopPropagation();
+                img.classList.toggle('zoomed');
+            };
+            lightbox.appendChild(img);
+        });
+        
+        lightbox.style.display = 'block';
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+        const zoomedImgs = lightbox.querySelectorAll('img.zoomed');
+        zoomedImgs.forEach(img => img.classList.remove('zoomed'));
+    }
+
     function handleEndState() {
         textTarget.classList.remove('show-text');
         historyDisplay.style.display = 'none';
@@ -616,12 +688,23 @@
         if (nextMap[currentCharacter]) {
             if (currentCharacter === 'LS') {
                 mainImg.src = "End_SickmanStele.jpg";
-                mainImg.style.cursor = "pointer"; // Indicates to user it can be clicked
+                mainImg.style.cursor = "pointer";
                 mainImg.onclick = () => {
                     mainImg.style.display = "none";
                     videoIframe.style.display = "block";
-                    // Using preview format to embed correctly
                     videoIframe.src = "https://drive.google.com/file/d/1yUNvO6yW68Wzbe_qGWHE_1mTvNdV_tLc/preview";
+                };
+            } else if (currentCharacter === 'LD') {
+                mainImg.src = "WanfoPavilion_Model.jpg";
+                mainImg.style.cursor = "pointer";
+                mainImg.onclick = () => {
+                    openLightbox(["WanfogeModelDetail.jpg"]);
+                };
+            } else if (currentCharacter === 'ST') {
+                mainImg.src = "PoetryScroll.jpg";
+                mainImg.style.cursor = "pointer";
+                mainImg.onclick = () => {
+                    openLightbox(["Scene1_Storyboards.jpg", "Scene3_Storyboards.jpg"]);
                 };
             } else {
                 mainImg.src = data[currentLang][currentCharacter].portrait;
