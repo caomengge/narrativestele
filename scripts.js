@@ -494,7 +494,7 @@ const SCRIPTS_DATA = {
   "zh": {
     "menuTitle": "選擇一位見證者",
     "LS": {
-      "name": "史克門 (Laurence Sickman)",
+      "name": "史克門",
       "portrait": "images/Laurence Sickman_史克门.jpg",
       "startBtn": "與石碑互動",
       "continueBtn": "繼續",
@@ -618,7 +618,7 @@ const SCRIPTS_DATA = {
       }
     },
     "LD": {
-      "name": "劉敦楨 (Liu Dunzhen)",
+      "name": "劉敦楨",
       "portrait": "images/LiuDunzhen_Portrait.jpg",
       "startBtn": "與敘事碑互動",
       "continueBtn": "繼續",
@@ -736,7 +736,7 @@ const SCRIPTS_DATA = {
       }
     },
     "ST": {
-      "name": "沈廷芳 (Shen Tingfang)",
+      "name": "沈廷芳",
       "portrait": "images/ShenTingfang_Portrait.jpg",
       "startBtn": "與敘事碑互動",
       "continueBtn": "繼續",
@@ -858,7 +858,7 @@ const SCRIPTS_DATA = {
       }
     },
     "WZ": {
-      "name": "王振 (Wang Zhen)",
+      "name": "王振",
       "portrait": "images/WangZhen_Portrait.jpg",
       "startBtn": "與石碑互動",
       "continueBtn": "繼續",
@@ -986,7 +986,7 @@ const SCRIPTS_DATA = {
   "sc": {
     "menuTitle": "选择一位见证者",
     "LS": {
-      "name": "史克门 (Laurence Sickman)",
+      "name": "史克门",
       "portrait": "images/Laurence Sickman_史克门.jpg",
       "startBtn": "与石碑互动",
       "continueBtn": "继续",
@@ -1110,7 +1110,7 @@ const SCRIPTS_DATA = {
       }
     },
     "LD": {
-      "name": "刘敦桢 (Liu Dunzhen)",
+      "name": "刘敦桢",
       "portrait": "images/LiuDunzhen_Portrait.jpg",
       "startBtn": "与叙事碑互动",
       "continueBtn": "继续",
@@ -1228,7 +1228,7 @@ const SCRIPTS_DATA = {
       }
     },
     "ST": {
-      "name": "沈廷芳 (Shen Tingfang)",
+      "name": "沈廷芳",
       "portrait": "images/ShenTingfang_Portrait.jpg",
       "startBtn": "与叙事碑互动",
       "continueBtn": "继续",
@@ -1350,7 +1350,7 @@ const SCRIPTS_DATA = {
       }
     },
     "WZ": {
-      "name": "王振 (Wang Zhen)",
+      "name": "王振",
       "portrait": "images/WangZhen_Portrait.jpg",
       "startBtn": "与石碑互动",
       "continueBtn": "继续",
