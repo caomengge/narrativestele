@@ -3,7 +3,7 @@ const SCRIPTS_DATA = {
     "menuTitle": "Select a Witness",
     "LS": {
       "name": "Laurence Sickman",
-      "portrait": "images/Laurence Sickman_史克门.jpg",
+      "portrait": "images/Laurence Sickman_Portrait.jpg",
       "startBtn": "Interact with the Stele",
       "continueBtn": "Continue",
       "nextSteleBtn": "Go to Liu Dunzhen’s Stele",
@@ -74,7 +74,7 @@ const SCRIPTS_DATA = {
         },
         "14": {
           "text": "At last, the trail led to a modest courtyard near a coffin shop. There, in front of the displaced ceiling, I negotiated the price and made an agreement.",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "choices": [
             {
               "label": "This ceiling belonged to Zhihua Temple. If you took it away, didn’t you leave the building “incomplete”?",
@@ -92,17 +92,17 @@ const SCRIPTS_DATA = {
         },
         "18": {
           "text": "I will never forget the room where the ceiling once belonged: walls covered with thousands of small seated Buddhas, like the stars in the cosmos.",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": 19
         },
         "19": {
           "text": "Years have passed, and yet in my dreams I keep returning to that room, as if I never truly left.",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": 20
         },
         "20": {
           "text": "Thank you for listening to these old stories. If one day you are able to enter Zhihua Temple, perhaps you will see what I was unable to see clearly back then.",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": "end"
         },
         "3a": {
@@ -115,12 +115,12 @@ const SCRIPTS_DATA = {
         },
         "16a": {
           "text": "(Sighing) My purchase did separate the ceiling from the building. But in those turbulent years, had it been left to scatter and decay, a museum may have been the safest refuge I could imagine.",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "next": 17
         },
         "16b": {
           "text": "(Sighing) Perhaps so. The museum did preserve it. But preservation does not undo separation. The ceiling was still removed from the building to which it once belonged.",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "next": 17
         }
       }
@@ -500,7 +500,7 @@ const SCRIPTS_DATA = {
     "menuTitle": "選擇一位見證者",
     "LS": {
       "name": "史克門",
-      "portrait": "images/Laurence Sickman_史克门.jpg",
+      "portrait": "images/Laurence Sickman_Portrait.jpg",
       "startBtn": "與石碑互動",
       "continueBtn": "繼續",
       "nextSteleBtn": "前往劉敦楨石碑",
@@ -571,7 +571,7 @@ const SCRIPTS_DATA = {
         },
         "14": {
           "text": "最後我找到一個小院子，隔壁還是棺材鋪。就在那個院子裡，藻井就擺在我眼前。我當場談好價錢，把事情定下來。",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "choices": [
             {
               "label": "這藻井原屬於智化寺。把它買走，不就是讓建築殘缺了嗎？",
@@ -589,17 +589,17 @@ const SCRIPTS_DATA = {
         },
         "18": {
           "text": "我永遠不會忘記萬佛閣裡的景象：牆上滿滿是數千尊小小的坐佛，像夜空裡的星星。",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": 19
         },
         "19": {
           "text": "這麼多年過去了，我還是常常夢見萬佛閣。好像我從來沒有真正離開過。",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": 20
         },
         "20": {
           "text": "謝謝您聽我講這些舊事。若有一天您能走進智化寺，或許會看見我當年未能看清的事。",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": "end"
         },
         "3a": {
@@ -612,12 +612,12 @@ const SCRIPTS_DATA = {
         },
         "16a": {
           "text": "（感嘆）收購藻井，確實造成它與建築的分離。在那樣動盪的年代，若任其散落損毀，或許保存在博物館，已是我當時能想到的最安全做法。",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "next": 17
         },
         "16b": {
           "text": "（感嘆）博物館確實讓它保存了下來。可是，它與原本建築的分離，始終是無法迴避的事實。",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "next": 17
         }
       }
@@ -997,7 +997,7 @@ const SCRIPTS_DATA = {
     "menuTitle": "选择一位见证者",
     "LS": {
       "name": "史克门",
-      "portrait": "images/Laurence Sickman_史克门.jpg",
+      "portrait": "images/Laurence Sickman_Portrait.jpg",
       "startBtn": "与石碑互动",
       "continueBtn": "继续",
       "nextSteleBtn": "前往刘敦桢石碑",
@@ -1068,7 +1068,7 @@ const SCRIPTS_DATA = {
         },
         "14": {
           "text": "最后我找到一个小院子，隔壁还是棺材铺。就在那个院子里，藻井就摆在我眼前。我当场谈好价钱，把事情定下来。",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "choices": [
             {
               "label": "这藻井原属于智化寺。把它买走，不就是让建筑残缺了吗？",
@@ -1086,17 +1086,17 @@ const SCRIPTS_DATA = {
         },
         "18": {
           "text": "我永远不会忘记万佛阁里的景象：墙上满满是数千尊小小的坐佛，像夜空里的星星。",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": 19
         },
         "19": {
           "text": "这么多年过去了，我还是常常梦见万佛阁。好像我从来没有真正离开过。",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": 20
         },
         "20": {
           "text": "谢谢您听我讲这些旧事。若有一天您能走进智化寺，或许会看见我当年未能看清的事。",
-          "image": "images/Image_1.4.jpg",
+          "image": "images/image_1.4.JPG",
           "next": "end"
         },
         "3a": {
@@ -1109,12 +1109,12 @@ const SCRIPTS_DATA = {
         },
         "16a": {
           "text": "（感叹）收购藻井，确实造成了它与建筑的分离。在那样动荡的年代，若任其散落损毁，或许保存在博物馆，已是我当时能想到的最安全做法。",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "next": 17
         },
         "16b": {
           "text": "（感叹）博物馆确实让它保存了下来。可是，它与原本建筑的分离，始终是无法回避的事实。",
-          "image": "images/Image_1.3.jpg",
+          "image": "images/image_1.3.jpg",
           "next": 17
         }
       }
