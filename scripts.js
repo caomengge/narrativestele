@@ -261,7 +261,7 @@ const SCRIPTS_DATA = {
           "image": "images/image_3.1.jpg"
         },
         "3": {
-          "text": "(inner thought) Who is reciting poetry? Perhaps I should answer with a poem I know.",
+          "text": "Visitor (inner thought): Who is reciting poetry? Perhaps I should answer with a poem I know.",
           "choices": [
             {
               "label": "Recite a poem by Su Shi.",
@@ -286,7 +286,7 @@ const SCRIPTS_DATA = {
           "next": 10
         },
         "10": {
-          "text": "May I ask, sir, have you ever been to Zhihua Temple?",
+          "text": "Visitor: May I ask, sir, have you ever been to Zhihua Temple?",
           "next": 11
         },
         "11": {
@@ -302,7 +302,7 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "My learning is shallow, and I know little of these past events. I would be grateful for your instruction.",
+          "text": "Visitor: My learning is shallow, and I know little of these past events. I would be grateful for your instruction.",
           "next": 15
         },
         "15": {
@@ -337,12 +337,12 @@ const SCRIPTS_DATA = {
           "next": "end"
         },
         "5a": {
-          "text": "By the sandy riverbank, lantern lights redden the hills; songs and drums resound amid laughter and bright talk. Tell me—does the young heart still remain? My cap sits askew, my sideburns tousled like windblown grass.",
+          "text": "Visitor: By the sandy riverbank, lantern lights redden the hills; songs and drums resound amid laughter and bright talk. Tell me—does the young heart still remain? My cap sits askew, my sideburns tousled like windblown grass.",
           "image": "images/image_3.2.jpg",
           "next": "6a"
         },
         "5b": {
-          "text": "The Ocean-Gazing Tower shines in the morning glow; along the river embankment, white paths cross the clear sand. At night, the sound of waves reaches the Temple of Wu Yuan; in spring, willow green veils the home of Su Xiaoxiao.",
+          "text": "Visitor: The Ocean-Gazing Tower shines in the morning glow; along the river embankment, white paths cross the clear sand. At night, the sound of waves reaches the Temple of Wu Yuan; in spring, willow green veils the home of Su Xiaoxiao.",
           "image": "images/image_3.2.jpg",
           "next": "6b"
         },
@@ -393,11 +393,11 @@ const SCRIPTS_DATA = {
           "next": 5
         },
         "5": {
-          "text": "(inner thought) Court music and scriptures… Could this be Wang Zhen, the eunuch who founded Zhihua Temple?",
+          "text": "Visitor (inner thought): Court music and scriptures… Could this be Wang Zhen, the eunuch who founded Zhihua Temple?",
           "next": 6
         },
         "6": {
-          "text": "May I ask, has the Coffered Ceiling in Wanfo Pavilion been completed?",
+          "text": "Visitor: May I ask, has the Coffered Ceiling in Wanfo Pavilion been completed?",
           "next": 7
         },
         "7": {
@@ -754,7 +754,7 @@ const SCRIPTS_DATA = {
           "image": "images/image_3.1.jpg"
         },
         "3": {
-          "text": "（內心想法）這是誰在誦詩？或許我也該以詩相和。",
+          "text": "觀眾：（內心想法）這是誰在誦詩？或許我也該以詩相和。",
           "choices": [
             {
               "label": "背誦一首蘇軾的詩。",
@@ -779,7 +779,7 @@ const SCRIPTS_DATA = {
           "next": 10
         },
         "10": {
-          "text": "請問先生，可曾去過智化寺？",
+          "text": "觀眾：請問先生，可曾去過智化寺？",
           "next": 11
         },
         "11": {
@@ -795,7 +795,7 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "晚輩才疏學淺，不太了解這些往事，願聽先生賜教。",
+          "text": "觀眾：晚輩才疏學淺，不太了解這些往事，願聽先生賜教。",
           "next": 15
         },
         "15": {
@@ -830,12 +830,12 @@ const SCRIPTS_DATA = {
           "next": "end"
         },
         "5a": {
-          "text": "沙河燈火照山紅，歌鼓喧喧笑語中。為問少年心在否，角巾欹側鬢如蓬。",
+          "text": "觀眾：沙河燈火照山紅，歌鼓喧喧笑語中。為問少年心在否，角巾欹側鬢如蓬。",
           "image": "images/image_3.2.jpg",
           "next": "6a"
         },
         "5b": {
-          "text": "望海樓明照曙霞，護江堤白蹋晴沙。濤聲夜入伍員廟，柳色春藏蘇小家。",
+          "text": "觀眾：望海樓明照曙霞，護江堤白蹋晴沙。濤聲夜入伍員廟，柳色春藏蘇小家。",
           "image": "images/image_3.2.jpg",
           "next": "6b"
         },
@@ -886,11 +886,11 @@ const SCRIPTS_DATA = {
           "next": 5
         },
         "5": {
-          "text": "（內心想法）宮廷雅樂、御賜經書……莫非此人就是創建智化寺的宦官王振？",
+          "text": "觀眾：（內心想法）宮廷雅樂、御賜經書……莫非此人就是創建智化寺的宦官王振？",
           "next": 6
         },
         "6": {
-          "text": "請公公留步。敢問萬佛閣中的九龍藻井，可已完工？",
+          "text": "觀眾：請公公留步。敢問萬佛閣中的九龍藻井，可已完工？",
           "next": 7
         },
         "7": {
@@ -1247,7 +1247,7 @@ const SCRIPTS_DATA = {
           "image": "images/image_3.1.jpg"
         },
         "3": {
-          "text": "（内心想法）这是谁在诵诗？或许我也该以诗相和。",
+          "text": "观众：（内心想法）这是谁在诵诗？或许我也该以诗相和。",
           "choices": [
             {
               "label": "背诵一首苏轼的诗。",
@@ -1272,7 +1272,7 @@ const SCRIPTS_DATA = {
           "next": 10
         },
         "10": {
-          "text": "请问先生，可曾去过智化寺？",
+          "text": "观众：请问先生，可曾去过智化寺？",
           "next": 11
         },
         "11": {
@@ -1288,7 +1288,7 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "晚辈才疏学浅，不太了解这些往事，愿听先生赐教。",
+          "text": "观众：晚辈才疏学浅，不太了解这些往事，愿听先生赐教。",
           "next": 15
         },
         "15": {
@@ -1323,12 +1323,12 @@ const SCRIPTS_DATA = {
           "next": "end"
         },
         "5a": {
-          "text": "沙河灯火照山红，歌鼓喧喧笑语中。为问少年心在否，角巾欹侧鬓如蓬。",
+          "text": "观众：沙河灯火照山红，歌鼓喧喧笑语中。为问少年心在否，角巾欹侧鬓如蓬。",
           "image": "images/image_3.2.jpg",
           "next": "6a"
         },
         "5b": {
-          "text": "望海楼明照曙霞，护江堤白蹋晴沙。涛声夜入伍员庙，柳色春藏苏小家。",
+          "text": "观众：望海楼明照曙霞，护江堤白蹋晴沙。涛声夜入伍员庙，柳色春藏苏小家。",
           "image": "images/image_3.2.jpg",
           "next": "6b"
         },
@@ -1379,11 +1379,11 @@ const SCRIPTS_DATA = {
           "next": 5
         },
         "5": {
-          "text": "（内心想法）宫廷雅乐、御赐经书……莫非此人就是创建智化寺的宦官王振？",
+          "text": "观众：（内心想法）宫廷雅乐、御赐经书……莫非此人就是创建智化寺的宦官王振？",
           "next": 6
         },
         "6": {
-          "text": "请公公留步。敢问万佛阁中的九龙藻井，可已完工？",
+          "text": "观众：请公公留步。敢问万佛阁中的九龙藻井，可已完工？",
           "next": 7
         },
         "7": {
