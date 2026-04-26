@@ -474,7 +474,9 @@
         
             if (nextMap[currentCharacter]) {
                 if (currentCharacter === 'LS') {
-                    mainImg.style.display = 'none';
+                    mainImg.src = 'images/Sickman_Standby.jpg';
+                    mainImg.style.display = 'block';
+                    mainImg.style.height = '250px';
                     mainImg.style.cursor = "default";
                     mainImg.onclick = null;
                 } else if (currentCharacter === 'LD') {
