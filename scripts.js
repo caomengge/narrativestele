@@ -36,7 +36,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "6": {
-          "text": "That gallery occupies a special place in my heart. The mural came from Guangsheng Temple in Shanxi. The coffered ceiling above came from Zhihua Temple in Beijing.",
+          "text": "That gallery occupies a special place in my heart. The mural came from Guangsheng Temple in Shanxi. The coffered ceiling overhead came from Zhihua Temple in Beijing.",
           "image": "images/Image_1.1.jpg",
           "next": 7
         },
@@ -58,17 +58,16 @@ const SCRIPTS_DATA = {
           "next": 11
         },
         "11": {
-          "text": "It was said that, to raise funds for repairs, the monks had already taken down the coffered ceiling and entrusted antique dealers with finding a buyer.",
+          "text": "I learned that, to raise funds for repairs, the monks had already taken down the coffered ceiling and entrusted antique dealers with finding a buyer.",
           "image": "images/image_1.2.jpg",
           "next": 12
         },
         "12": {
           "text": "Warner believed it would be an ideal acquisition for a new museum then under construction in Kansas City.",
-          "image": "images/image_1.2.jpg",
           "next": 13
         },
         "13": {
-          "text": "So I asked everywhere about the ceiling’s whereabouts: visiting antique shops in Liulichang, seeking introductions, holding long conversations with dealers, and, inevitably, drinking a great deal of tea.",
+          "text": "So I followed every lead I could find: visiting antique shops in Liulichang, seeking introductions, holding long conversations with dealers, and, inevitably, drinking a great deal of tea.",
           "image": "images/image_1.2.jpg",
           "next": 14
         },
@@ -87,7 +86,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "17": {
-          "text": "Later, I read the survey report on Zhihua Temple by the architectural historian Liu Dunzhen. So I went there myself, hoping to see with my own eyes where the ceiling had originally been.",
+          "text": "Later, I read the survey report on Zhihua Temple by the architectural historian Liu Dunzhen. So I went there myself, hoping to see with my own eyes where the ceiling had once belonged.",
           "next": 18
         },
         "18": {
@@ -102,7 +101,6 @@ const SCRIPTS_DATA = {
         },
         "20": {
           "text": "Thank you for listening to these old stories. If one day you are able to enter Zhihua Temple, perhaps you will see what I was unable to see clearly back then.",
-          "image": "images/image_1.4.JPG",
           "next": "end"
         },
         "3a": {
@@ -110,7 +108,7 @@ const SCRIPTS_DATA = {
           "next": 4
         },
         "3b": {
-          "text": "Interesting… You may help me with a question. For many years I served as a curator at the Nelson-Atkins Museum of Art.",
+          "text": "Interesting… Perhaps you can help me with a question that has long stayed with me. I served for many years as a curator at the Nelson-Atkins Museum of Art.",
           "next": 4
         },
         "16a": {
@@ -533,7 +531,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "6": {
-          "text": "這裡對我來說意義非凡。牆上的壁畫來自山西廣勝寺，頭頂上的藻井來自北京智化寺。",
+          "text": "這間展廳對我來說意義非凡。牆上的壁畫來自山西廣勝寺，頭頂上的藻井來自北京智化寺。",
           "image": "images/Image_1.1.jpg",
           "next": 7
         },
@@ -560,8 +558,7 @@ const SCRIPTS_DATA = {
           "next": 12
         },
         "12": {
-          "text": "華爾納說，堪薩斯城正在蓋一座新的博物館，這件藻井非常合適成為其收藏。",
-          "image": "images/image_1.2.jpg",
+          "text": "華爾納說，堪薩斯城正在蓋一座新的博物館，這件藻井非常合適成為其館藏。",
           "next": 13
         },
         "13": {
@@ -599,7 +596,6 @@ const SCRIPTS_DATA = {
         },
         "20": {
           "text": "謝謝您聽我講這些舊事。若有一天您能走進智化寺，或許會看見我當年未能看清的事。",
-          "image": "images/image_1.4.JPG",
           "next": "end"
         },
         "3a": {
@@ -1030,7 +1026,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "6": {
-          "text": "这里对我来说意义非凡。墙上的壁画来自山西广胜寺，头顶上的藻井来自北京智化寺。",
+          "text": "这间展厅对我来说意义非凡。墙上的壁画来自山西广胜寺，头顶上的藻井来自北京智化寺。",
           "image": "images/Image_1.1.jpg",
           "next": 7
         },
@@ -1057,8 +1053,7 @@ const SCRIPTS_DATA = {
           "next": 12
         },
         "12": {
-          "text": "华尔纳说，堪萨斯城正在盖一座新的博物馆，这件藻井非常合适成为其收藏。",
-          "image": "images/image_1.2.jpg",
+          "text": "华尔纳说，堪萨斯城正在盖一座新的博物馆，这件藻井非常合适成为其馆藏。",
           "next": 13
         },
         "13": {
@@ -1096,7 +1091,6 @@ const SCRIPTS_DATA = {
         },
         "20": {
           "text": "谢谢您听我讲这些旧事。若有一天您能走进智化寺，或许会看见我当年未能看清的事。",
-          "image": "images/image_1.4.JPG",
           "next": "end"
         },
         "3a": {
