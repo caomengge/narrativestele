@@ -257,7 +257,7 @@
     </h1>
 
     <div id="media-main-area">
-        <img id="main-display-img" src="images/Start_SickmanStele.jpg" alt="Gallery View">
+        <img id="main-display-img" src="images/Start_NarrativeStele.jpg" alt="Gallery View">
         <iframe id="video-iframe" allow="autoplay; fullscreen" src=""></iframe>
     </div>
     
@@ -284,6 +284,7 @@
     const textTarget = document.getElementById('text-target');
     const actions = document.getElementById('actions');
     const mainImg = document.getElementById('main-display-img');
+    const mediaMainArea = document.getElementById('media-main-area');
     const videoIframe = document.getElementById('video-iframe');
     const nameTag = document.getElementById('name-tag');
     const historyDisplay = document.getElementById('history-display');
@@ -334,9 +335,10 @@
             textTarget.classList.remove('show-text');
 
             // Reset Media Display
+            mediaMainArea.style.height = '250px';
             mainImg.style.display = 'block';
             mainImg.style.height = '100%';
-            mainImg.src = 'images/Start_SickmanStele.jpg';
+            mainImg.src = 'images/Start_NarrativeStele.jpg';
             videoIframe.style.display = 'none';
             videoIframe.src = '';
             mainImg.style.cursor = 'default';
@@ -365,6 +367,7 @@
         function beginInteraction() {
             actions.classList.remove('menu-mode');
             // Reset Media Display
+            mediaMainArea.style.height = '250px';
             mainImg.style.display = 'block';
             videoIframe.style.display = 'none';
             videoIframe.src = '';
@@ -467,71 +470,47 @@
 
         function handleEndState() {
             textTarget.classList.remove('show-text');
+            textTarget.innerHTML = '';
             historyDisplay.style.display = 'none';
-            mainImg.style.height = "250px";
-        
+
             const nextMap = { 'LS': 'LD', 'LD': 'ST', 'ST': 'WZ' };
-        
-            if (nextMap[currentCharacter]) {
-                if (currentCharacter === 'LS') {
-                    mainImg.style.display = 'none';
-                    mainImg.style.cursor = "default";
-                    mainImg.onclick = null;
-                } else if (currentCharacter === 'LD') {
-                    mainImg.style.display = 'none';
-                    mainImg.style.cursor = "default";
-                    mainImg.onclick = null;
-                } else if (currentCharacter === 'ST') {
-                    mainImg.style.display = 'none';
-                    mainImg.style.cursor = "default";
-                    mainImg.onclick = null;
-                } else {
-                    mainImg.src = data[currentLang][currentCharacter].portrait;
-                    mainImg.style.cursor = "default";
-                    mainImg.onclick = null;
-                }
-            
-                nameTag.style.opacity = "0";
-            
-                setTimeout(() => {
+            const standbyImages = {
+                'LS': 'images/Sickman_Standby.jpg',
+                'LD': 'images/Liu_Standby.jpg',
+                'ST': 'images/Shen_Standby.jpg',
+                'WZ': 'images/Wang_Standby.jpg'
+            };
+
+            mainImg.src = standbyImages[currentCharacter];
+            mainImg.style.display = 'block';
+            mainImg.style.height = '450px';
+            mediaMainArea.style.height = '450px';
+            mainImg.style.cursor = "default";
+            mainImg.onclick = null;
+            nameTag.style.opacity = "0";
+
+            setTimeout(() => {
+                actions.innerHTML = '';
+                if (nextMap[currentCharacter]) {
                     const btn = document.createElement('button');
                     btn.innerText = data[currentLang][currentCharacter].nextSteleBtn;
                     btn.onclick = () => {
                         currentCharacter = nextMap[currentCharacter];
                         beginInteraction();
                     };
-                    actions.innerHTML = '';
                     actions.appendChild(btn);
-
-                    // Add a "Go Back to Menu" option at the end of a character arc
-                    const menuBtn = document.createElement('button');
-                    menuBtn.innerText = currentLang === 'en' ? "Back to Menu" : (currentLang === 'zh' ? "返回菜單" : "返回菜单");
-                    menuBtn.onclick = showCharacterMenu;
-                    actions.appendChild(menuBtn);
-
-                    if (currentCharacter !== 'LS' && currentCharacter !== 'LD' && currentCharacter !== 'ST') {
-                        let resonanceText = "Click the image to interact";
-                        if (currentLang === 'zh') resonanceText = "點擊圖片開始互動";
-                        if (currentLang === 'sc') resonanceText = "点击图片开始互动";
-                        textTarget.innerText = resonanceText;
-                        textTarget.classList.add('show-text');
-                    }
-                }, 500);
-            } else {
-                nameTag.style.opacity = "0";
-
-                mainImg.style.display = 'none';
-                mainImg.style.cursor = "default";
-                mainImg.onclick = null;
-
-                setTimeout(() => {
+                } else {
                     const btn = document.createElement('button');
                     btn.innerText = data[currentLang][currentCharacter].restartBtn || "Restart";
                     btn.onclick = () => location.reload();
-                    actions.innerHTML = '';
                     actions.appendChild(btn);
-                }, 500);
-            }
+                }
+
+                const menuBtn = document.createElement('button');
+                menuBtn.innerText = currentLang === 'en' ? "Back to Menu" : (currentLang === 'zh' ? "返回菜單" : "返回菜单");
+                menuBtn.onclick = showCharacterMenu;
+                actions.appendChild(menuBtn);
+            }, 500);
         }
 
         window.setLanguage = setLanguage;
