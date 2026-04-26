@@ -146,7 +146,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "4": {
-          "text": "Visitor: (inner thought) Wasn’t I just visiting an exhibition? How did I end up at Zhihua Temple?",
+          "text": "Visitor (inner thought): Wasn't I just visiting an exhibition? How did I end up at Zhihua Temple?",
           "next": 5
         },
         "5": {
@@ -154,7 +154,7 @@ const SCRIPTS_DATA = {
           "next": 6
         },
         "6": {
-          "text": "He had a keen eye for Chinese art, and he also asked me a few questions about ancient architecture.",
+          "text": "He has a keen eye for Chinese art, and he has also asked me a few questions about ancient architecture.",
           "choices": [
             {
               "label": "Could you be Professor Liu Dunzhen?",
@@ -167,7 +167,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "9": {
-          "text": "Zhihua Temple is among Beiping’s earlier surviving official-style timber buildings. More remarkably, its architecture gives form to Buddhist visions of the cosmos and the Pure Land.",
+          "text": "Zhihua Temple is among Beiping's oldest surviving examples of official-style timber architecture. More remarkably, its architecture gives form to Buddhist visions of the cosmos and the Pure Land.",
           "next": 10
         },
         "10": {
@@ -176,12 +176,12 @@ const SCRIPTS_DATA = {
           "next": 11
         },
         "11": {
-          "text": "Its first level, Rulai Hall, enshrines Śākyamuni Buddha and Buddhist scriptures, symbolizing the wisdom of the Dharma accessible in this world.",
+          "text": "Its first level, Rulai Hall, enshrines Śākyamuni Buddha and houses Buddhist scriptures, symbolizing the wisdom of the Dharma accessible in this world.",
           "image": "images/image_2.2.jpg",
           "next": 12
         },
         "12": {
-          "text": "Its second level, Wanfo Pavilion, enshrines the Buddhas of the Three Bodies. The central figure is Vairocana, who represents the Dharma as abstract truth, to be realized through understanding the scriptures.",
+          "text": "Its second level, Wanfo Pavilion, enshrines the Three Bodies of the Buddha. The central figure is Vairocana, who represents the Dharma as abstract truth, to be realized through understanding the scriptures.",
           "image": "images/image_2.3.JPG",
           "next": 13
         },
@@ -191,34 +191,30 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "The scriptures below, the Dharma-body Buddha at the center, and the coffered ceiling above—together, they formed a complete space of faith.",
+          "text": "Scriptures below, the Dharma-body Buddha above, and the coffered ceiling overhead—together, they formed a complete space of faith.",
           "image": "images/image_2.4.jpg",
           "next": 15
         },
         "15": {
-          "text": "Unfortunately, the coffered ceiling has been taken down, and I do not know where it has gone…",
+          "text": "Unfortunately, the coffered ceiling has already been taken down, and I do not know where it has gone…",
           "image": "images/image_2.5.JPG",
           "choices": [
             {
-              "label": "Tell Liu Dunzhen that the ceiling is at the Nelson-Atkins Museum of Art.",
-              "next": 17
+              "label": "Tell Liu Dunzhen that the ceiling is at a museum in Kansas City.",
+              "next": "17a"
             },
             {
               "label": "Remain silent.",
-              "next": 17
+              "next": "17b"
             }
           ]
-        },
-        "17": {
-          "text": "(sighing deeply) These are turbulent times, and countless cultural artifacts have been dispersed overseas. Even a coffered ceiling—an element that once belonged to a building—could not escape being taken down and sold.",
-          "next": 18
         },
         "18": {
           "text": "If Shen Tingfang had not submitted his memorial, perhaps Zhihua Temple would not have fallen into such decline.",
           "next": 19
         },
         "19": {
-          "text": "We do not have much time left. Once the survey is complete, I hope to create an architectural model of Wanfo Pavilion for teaching and research.",
+          "text": "There is no time to lose. Once the survey is complete, I hope to create an architectural model of Wanfo Pavilion for teaching and research.",
           "next": 20
         },
         "20": {
@@ -234,12 +230,20 @@ const SCRIPTS_DATA = {
           "next": 4
         },
         "8a": {
-          "text": "Indeed, I am. I am honored that you recognize me. I have brought my students to Beiping to survey the remains of ancient architecture.",
+          "text": "Indeed, I am. I am honored that you recognize me. I have brought my students to Beiping to survey historic architecture.",
           "next": 9
         },
         "8b": {
-          "text": "What a coincidence. Then allow me to introduce myself. I am Liu Dunzhen. I have brought my students to Beiping to survey the remains of ancient architecture.",
+          "text": "What a coincidence. Then allow me to introduce myself. I am Liu Dunzhen. I have brought my students to Beiping to survey historic architecture.",
           "next": 9
+        },
+        "17a": {
+          "text": "(startled) Kansas City? Across the ocean… If it is being preserved, that is some comfort. Yet once separated from Wanfo Pavilion, something of its meaning is inevitably lost.",
+          "next": 18
+        },
+        "17b": {
+          "text": "(sighing deeply) These are turbulent times, and countless cultural artifacts have been dispersed overseas. Even a coffered ceiling—an element that once belonged to a building—could not escape being taken down and sold.",
+          "next": 18
         }
       }
     },
@@ -629,7 +633,7 @@ const SCRIPTS_DATA = {
           "text": "您看起來有些疑惑，需要我幫忙嗎？",
           "choices": [
             {
-              "label": "我想知道如何去往智化寺。",
+              "label": "我想知道如何前往智化寺。",
               "next": "3a"
             },
             {
@@ -684,7 +688,7 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "經藏在下、法身居中，藻井在上。整座建築因而形成一個完整的信仰空間。",
+          "text": "下有經藏，上有法身佛，頂覆藻井。整座建築因而形成一個完整的信仰空間。",
           "image": "images/image_2.4.jpg",
           "next": 15
         },
@@ -693,18 +697,14 @@ const SCRIPTS_DATA = {
           "image": "images/image_2.5.JPG",
           "choices": [
             {
-              "label": "告訴劉敦楨藻井在納爾遜·阿特金斯藝術博物館。",
-              "next": 17
+              "label": "告訴劉敦楨藻井如今在堪薩斯城的一座美術館中。",
+              "next": "17a"
             },
             {
               "label": "保持沉默。",
-              "next": 17
+              "next": "17b"
             }
           ]
-        },
-        "17": {
-          "text": "（長嘆）當下時局動盪，流散海外的文物多不勝數。連藻井這樣原本屬於建築的構件，也不免被拆下賣掉。",
-          "next": 18
         },
         "18": {
           "text": "倘若當年沈廷芳沒有呈上那道奏摺，智化寺或許不會衰敗至此。",
@@ -715,7 +715,7 @@ const SCRIPTS_DATA = {
           "next": 20
         },
         "20": {
-          "text": "很高興能與您一同細看這座建築。待模型完成後，也歡迎您給我們提些建議。",
+          "text": "很高興能與您一同細看這座建築。待模型完成後，也盼您不吝指教。",
           "next": "end"
         },
         "3a": {
@@ -733,6 +733,14 @@ const SCRIPTS_DATA = {
         "8b": {
           "text": "真是湊巧。既然如此，請容我自我介紹一下。在下劉敦楨。此次我帶著學生來到北平，考察古代建築遺存。",
           "next": 9
+        },
+        "17a": {
+          "text": "（驚訝）堪薩斯城？竟已遠渡重洋……若它仍能被妥善保存，未嘗不是一件幸事。只是，藻井本屬於萬佛閣，離開了原本的梁架與殿宇，終究令人悵然。",
+          "next": 18
+        },
+        "17b": {
+          "text": "（長嘆）如今時局動盪，無數文物散落海外。連藻井這樣原本屬於建築的一部分，也終究沒能逃過被拆下變賣的命運。",
+          "next": 18
         }
       }
     },
@@ -1122,7 +1130,7 @@ const SCRIPTS_DATA = {
           "text": "您看起来有些疑惑，需要我帮忙吗？",
           "choices": [
             {
-              "label": "我想知道如何去往智化寺。",
+              "label": "我想知道如何前往智化寺。",
               "next": "3a"
             },
             {
@@ -1177,7 +1185,7 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "经藏在下、法身居中，藻井在上。整座建筑因而形成一个完整的信仰空间。",
+          "text": "下有经藏，上有法身佛，顶覆藻井。整座建筑因而形成一个完整的信仰空间。",
           "image": "images/image_2.4.jpg",
           "next": 15
         },
@@ -1186,18 +1194,14 @@ const SCRIPTS_DATA = {
           "image": "images/image_2.5.JPG",
           "choices": [
             {
-              "label": "告诉刘敦桢藻井在堪萨斯城的纳尔逊·阿特金斯艺术博物馆。",
-              "next": 17
+              "label": "告诉刘敦桢藻井如今在堪萨斯城的一座美术馆中。",
+              "next": "17a"
             },
             {
               "label": "保持沉默。",
-              "next": 17
+              "next": "17b"
             }
           ]
-        },
-        "17": {
-          "text": "（长叹）当下时局动荡，流散海外的文物多不胜数。连藻井这样原本属于建筑的构件，也不免被拆下卖掉。",
-          "next": 18
         },
         "18": {
           "text": "倘若当年沈廷芳没有呈上那道奏折，智化寺或许不会衰败至此。",
@@ -1208,7 +1212,7 @@ const SCRIPTS_DATA = {
           "next": 20
         },
         "20": {
-          "text": "很高兴能与您一同细看这座建筑。待模型完成后，也欢迎您给我们提些建议。",
+          "text": "很高兴能与您一同细看这座建筑。待模型完成后，也盼您不吝指教。",
           "next": "end"
         },
         "3a": {
@@ -1226,6 +1230,14 @@ const SCRIPTS_DATA = {
         "8b": {
           "text": "真是凑巧。既然如此，请容我自我介绍一下。在下刘敦桢。此次我带着学生来到北平，考察古代建筑遗存。",
           "next": 9
+        },
+        "17a": {
+          "text": "（惊讶）堪萨斯城？竟已远渡重洋……若它仍能被妥善保存，未尝不是一件幸事。只是，藻井本属于万佛阁，离开了原本的梁架与殿宇，终究令人怅然。",
+          "next": 18
+        },
+        "17b": {
+          "text": "（长叹）如今时局动荡，无数文物散落海外。连藻井这样原本属于建筑的一部分，也终究没能逃过被拆下变卖的命运。",
+          "next": 18
         }
       }
     },
