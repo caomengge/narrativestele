@@ -96,6 +96,10 @@ const SCRIPTS_DATA = {
         "19": {
           "text": "Years have passed, and yet in my dreams I keep returning to that room, as if I never truly left.",
           "image": "images/image_1.4.JPG",
+          "next": 20
+        },
+        "20": {
+          "text": "Thank you for listening to these old stories. If one day you are able to enter Zhihua Temple, perhaps you will see what I was unable to see clearly back then.",
           "next": "end"
         },
         "3a": {
@@ -586,6 +590,10 @@ const SCRIPTS_DATA = {
         "19": {
           "text": "這麼多年過去了，我還是常常夢見萬佛閣。好像我從來沒有真正離開過。",
           "image": "images/image_1.4.JPG",
+          "next": 20
+        },
+        "20": {
+          "text": "謝謝您聽我講這些舊事。若有一天您能走進智化寺，或許會看見我當年未能看清的事。",
           "next": "end"
         },
         "3a": {
@@ -1076,6 +1084,10 @@ const SCRIPTS_DATA = {
         "19": {
           "text": "这么多年过去了，我还是常常梦见万佛阁。好像我从来没有真正离开过。",
           "image": "images/image_1.4.JPG",
+          "next": 20
+        },
+        "20": {
+          "text": "谢谢您听我讲这些旧事。若有一天您能走进智化寺，或许会看见我当年未能看清的事。",
           "next": "end"
         },
         "3a": {
