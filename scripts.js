@@ -90,12 +90,12 @@ const SCRIPTS_DATA = {
         },
         "18": {
           "text": "I will never forget the room where the ceiling once belonged: walls covered with thousands of small seated Buddhas, like the stars in the cosmos.",
-          "image": "images/image_1.4.JPG",
+          "image": "images/image_1.4.jpg",
           "next": 19
         },
         "19": {
           "text": "Years have passed, and yet in my dreams I keep returning to that room, as if I never truly left.",
-          "image": "images/image_1.4.JPG",
+          "image": "images/image_1.4.jpg",
           "next": 20
         },
         "20": {
@@ -584,12 +584,12 @@ const SCRIPTS_DATA = {
         },
         "18": {
           "text": "我永遠不會忘記萬佛閣裡的景象：牆上滿滿是數千尊小小的坐佛，像夜空裡的星星。",
-          "image": "images/image_1.4.JPG",
+          "image": "images/image_1.4.jpg",
           "next": 19
         },
         "19": {
           "text": "這麼多年過去了，我還是常常夢見萬佛閣。好像我從來沒有真正離開過。",
-          "image": "images/image_1.4.JPG",
+          "image": "images/image_1.4.jpg",
           "next": 20
         },
         "20": {
@@ -1078,12 +1078,12 @@ const SCRIPTS_DATA = {
         },
         "18": {
           "text": "我永远不会忘记万佛阁里的景象：墙上满满是数千尊小小的坐佛，像夜空里的星星。",
-          "image": "images/image_1.4.JPG",
+          "image": "images/image_1.4.jpg",
           "next": 19
         },
         "19": {
           "text": "这么多年过去了，我还是常常梦见万佛阁。好像我从来没有真正离开过。",
-          "image": "images/image_1.4.JPG",
+          "image": "images/image_1.4.jpg",
           "next": 20
         },
         "20": {
