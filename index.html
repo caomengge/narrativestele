@@ -240,6 +240,7 @@
         }
 
     </style>
+    <script src="scripts.js"></script>
 </head>
 <body>
 
@@ -295,9 +296,7 @@
     let currentStep = null; // null = on menu, "end" = end state, otherwise step key
 
 
-    fetch('scripts.json')
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
+    (function(data) {
 
 
         const langToggle = document.getElementById('lang-toggle');
@@ -540,7 +539,7 @@
         window.openLightbox = openLightbox;
         window.closeLightbox = closeLightbox;
 
-        });
+    })(SCRIPTS_DATA);
 </script>
 
 </body>

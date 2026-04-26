@@ -1,4 +1,4 @@
-{
+const SCRIPTS_DATA = {
   "en": {
     "menuTitle": "Select a Witness",
     "LS": {
@@ -1475,4 +1475,4 @@
       }
     }
   }
-}
+};
