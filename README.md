@@ -1,6 +1,6 @@
 # Narrative Stele Prototype 叙事碑原型
 
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 An interactive, multilingual web kiosk for a gallery exhibition at Zhihua Temple (智化寺), Beijing. Visitors encounter four historical witnesses through a branching dialogue experience rendered on physical "narrative steles."
 
