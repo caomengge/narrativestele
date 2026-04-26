@@ -284,6 +284,7 @@
     const textTarget = document.getElementById('text-target');
     const actions = document.getElementById('actions');
     const mainImg = document.getElementById('main-display-img');
+    const mediaMainArea = document.getElementById('media-main-area');
     const videoIframe = document.getElementById('video-iframe');
     const nameTag = document.getElementById('name-tag');
     const historyDisplay = document.getElementById('history-display');
@@ -334,6 +335,7 @@
             textTarget.classList.remove('show-text');
 
             // Reset Media Display
+            mediaMainArea.style.height = '250px';
             mainImg.style.display = 'block';
             mainImg.style.height = '100%';
             mainImg.src = 'images/Start_NarrativeStele.jpg';
@@ -365,6 +367,7 @@
         function beginInteraction() {
             actions.classList.remove('menu-mode');
             // Reset Media Display
+            mediaMainArea.style.height = '250px';
             mainImg.style.display = 'block';
             videoIframe.style.display = 'none';
             videoIframe.src = '';
@@ -480,7 +483,8 @@
 
             mainImg.src = standbyImages[currentCharacter];
             mainImg.style.display = 'block';
-            mainImg.style.height = '250px';
+            mainImg.style.height = '450px';
+            mediaMainArea.style.height = '450px';
             mainImg.style.cursor = "default";
             mainImg.onclick = null;
             nameTag.style.opacity = "0";
