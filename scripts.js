@@ -68,7 +68,6 @@ const SCRIPTS_DATA = {
         },
         "13": {
           "text": "So I followed every lead I could find: visiting antique shops in Liulichang, seeking introductions, holding long conversations with dealers, and, inevitably, drinking a great deal of tea.",
-          "image": "images/image_1.2.jpg",
           "next": 14
         },
         "14": {
@@ -559,7 +558,6 @@ const SCRIPTS_DATA = {
         },
         "13": {
           "text": "於是我到處打聽藻井的下落，頻繁光顧琉璃廠的古董店、請人介紹、在漫長的對話中喝了無數杯茶。",
-          "image": "images/image_1.2.jpg",
           "next": 14
         },
         "14": {
@@ -599,7 +597,7 @@ const SCRIPTS_DATA = {
           "next": 4
         },
         "16a": {
-          "text": "（感嘆）收購藻井，確實造成它與建築的分離。在那樣動盪的年代，若任其散落損毀，或許保存在博物館，已是我當時能想到的最安全做法。",
+          "text": "（感嘆）我買下藻井，確實造成它與建築的分離。在那樣動盪的年代，若任其散落損毀，或許保存在博物館，已是我當時能想到的最安全做法。",
           "image": "images/image_1.3.jpg",
           "next": 17
         },
@@ -1050,7 +1048,6 @@ const SCRIPTS_DATA = {
         },
         "13": {
           "text": "于是我到处打听藻井的下落，频繁光顾琉璃厂的古董店、请人介绍、在漫长的对话中喝了无数杯茶。",
-          "image": "images/image_1.2.jpg",
           "next": 14
         },
         "14": {
@@ -1090,7 +1087,7 @@ const SCRIPTS_DATA = {
           "next": 4
         },
         "16a": {
-          "text": "（感叹）收购藻井，确实造成了它与建筑的分离。在那样动荡的年代，若任其散落损毁，或许保存在博物馆，已是我当时能想到的最安全做法。",
+          "text": "（感叹）我买下藻井，确实造成了它与建筑的分离。在那样动荡的年代，若任其散落损毁，或许保存在博物馆，已是我当时能想到的最安全做法。",
           "image": "images/image_1.3.jpg",
           "next": 17
         },
