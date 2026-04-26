@@ -251,16 +251,17 @@ const SCRIPTS_DATA = {
       "nextSteleBtn": "Go to Wang Zhen's Stele",
       "steps": {
         "0": {
-          "text": "(reciting) Ten thousand folds of western hills embrace the imperial blue; gazing from the pavilion, clouds sink deep and dim. The vast sky and setting sun stretch beyond sight; before autumn arrives, frontier geese have already reached Jiting.",
+          "text": "(reciting) Ten thousand folds of western hills embrace the imperial blue; gazing from the pavilion, clouds sink deep and dim. The vast sky and setting sun stretch beyond sight; before autumn arrives, geese have already reached the northern frontier.",
           "image": "images/image_3.1.jpg",
           "next": 2
         },
         "2": {
           "text": "Autumn in the capital is crisp and clear, just right for climbing high and gazing into the distance. What a pity there is no kindred spirit here to share the view.",
-          "next": 3
+          "next": 3,
+          "image": "images/image_3.1.jpg"
         },
         "3": {
-          "text": "Visitor (inner thought): Who is reciting poetry? Perhaps I should answer with a poem I know.",
+          "text": "(inner thought) Who is reciting poetry? Perhaps I should answer with a poem I know.",
           "choices": [
             {
               "label": "Recite a poem by Su Shi.",
@@ -277,31 +278,31 @@ const SCRIPTS_DATA = {
           "next": 8
         },
         "8": {
-          "text": "By imperial grace, I entered the Hanlin Academy to help compile the History of the Ming, where I studied the rise and fall of the past dynasty.",
+          "text": "By imperial grace, I entered the Hanlin Academy to help compile the History of Ming, where I studied the rise and fall of rulers and ministers of the former dynasty.",
           "next": 9
         },
         "9": {
-          "text": "I also often visit historic sites in the capital—partly to enjoy the scenery, and partly to see what remains of earlier dynasties.",
+          "text": "I often visit historic sites in the capital—partly to enjoy the scenery, and partly to see what remains of earlier dynasties.",
           "next": 10
         },
         "10": {
-          "text": "Visitor: May I ask, sir, have you ever been to Zhihua Temple?",
+          "text": "May I ask, sir, have you ever been to Zhihua Temple?",
           "next": 11
         },
         "11": {
-          "text": "(slightly surprised) Zhihua Temple? As it happens, I visited just a few days ago. The incense was flourishing, and drums and music filled the air—it was quite lively.",
+          "text": "(slightly surprised) Zhihua Temple? As it happens, I visited just a few days ago. The temple was bustling with incense offerings, and drums and music filled the air—it was quite lively.",
           "next": 12
         },
         "12": {
-          "text": "(his tone darkens) But I did not expect to find a wooden image of Wang Zhen still enshrined there. The common people, unaware of the truth, were bowing to him in worship.",
+          "text": "(his tone darkens) But I did not expect to find a wooden effigy of Wang Zhen still enshrined there. The common people, unaware of the truth, were bowing to him in worship.",
           "next": 13
         },
         "13": {
-          "text": "Wang Zhen's crimes against the state are clearly recorded in history. So I submitted a memorial to the court, requesting that his image be removed from Zhihua Temple.",
+          "text": "Wang Zhen’s offenses against the state are clearly recorded in history. So I submitted a memorial to the court, requesting that his image be removed from Zhihua Temple.",
           "next": 14
         },
         "14": {
-          "text": "Visitor: My learning is shallow, and I know little of these past events. I would be grateful for your instruction.",
+          "text": "My learning is shallow, and I know little of these past events. I would be grateful for your instruction.",
           "next": 15
         },
         "15": {
@@ -328,20 +329,20 @@ const SCRIPTS_DATA = {
           ]
         },
         "20": {
-          "text": "(sighing) Still, cause and consequence in history are not always easy to see clearly. As I grow older, I find myself more willing to place my heart in poetry than in politics.",
+          "text": "(sighing) Still, cause and consequence in history are not always easy to see clearly. As I grow older, I find myself drawn more to poetry than to politics.",
           "next": 21
         },
         "21": {
-          "text": "Though we met by chance today, poetry has brought us together. I once copied several poems by Ming-dynasty literati on Zhihua Temple. Please accept them as a gift.",
+          "text": "Though we met by chance today, poetry has brought us together. I have copied several poems about Zhihua Temple by Ming-dynasty literati. Please accept them as a gift.",
           "next": "end"
         },
         "5a": {
-          "text": "Visitor: By the sandy riverbank, lantern lights redden the hills; songs and drums resound amid laughter and bright talk. Tell me—does the young heart still remain? My cap sits askew, my sideburns like wind-tossed weeds.",
+          "text": "By the sandy riverbank, lantern lights redden the hills; songs and drums resound amid laughter and bright talk. Tell me—does the young heart still remain? My cap sits askew, my sideburns tousled like windblown grass.",
           "image": "images/image_3.2.jpg",
           "next": "6a"
         },
         "5b": {
-          "text": "Visitor: The Ocean-Gazing Tower shines in the morning glow; along the river embankment, white paths cross the clear sand. At night, waves reach the Temple of Wu Yuan; in spring, willow green veils the home of Su Xiaoxiao.",
+          "text": "The Ocean-Gazing Tower shines in the morning glow; along the river embankment, white paths cross the clear sand. At night, the sound of waves reaches the Temple of Wu Yuan; in spring, willow green veils the home of Su Xiaoxiao.",
           "image": "images/image_3.2.jpg",
           "next": "6b"
         },
@@ -356,7 +357,7 @@ const SCRIPTS_DATA = {
           "next": 7
         },
         "19a": {
-          "text": "A person of insight sees the matter clearly. To take history as a mirror is a responsibility we all share.",
+          "text": "A person of insight can see the matter clearly. To take history as a mirror is a responsibility we all share.",
           "next": 20
         },
         "19b": {
@@ -379,12 +380,12 @@ const SCRIPTS_DATA = {
           "next": 2
         },
         "2": {
-          "text": "These pieces I taught you come from court ceremonial music. Not the slightest mistake can be tolerated.",
+          "text": "These pieces I have taught you come from court ceremonial music. Not the slightest mistake can be tolerated.",
           "image": "images/image_4.1.jpg",
           "next": 3
         },
         "3": {
-          "text": "Tomorrow, His Majesty will bestow upon this temple a set of Buddhist scriptures printed in the palace.",
+          "text": "Tomorrow, His Majesty will bestow upon this temple a set of Buddhist scriptures printed in the court.",
           "next": 4
         },
         "4": {
@@ -392,32 +393,32 @@ const SCRIPTS_DATA = {
           "next": 5
         },
         "5": {
-          "text": "Visitor (inner thought): Court music, imperial scriptures… Could this be Wang Zhen, the eunuch who founded Zhihua Temple?",
+          "text": "(inner thought) Court music and scriptures… Could this be Wang Zhen, the eunuch who founded Zhihua Temple?",
           "next": 6
         },
         "6": {
-          "text": "Visitor: May I ask, has the Nine-Dragon Coffered Ceiling in Wanfo Pavilion been completed?",
+          "text": "May I ask, has the Coffered Ceiling in Wanfo Pavilion been completed?",
           "next": 7
         },
         "7": {
           "text": "(surprised) I have never spoken to outsiders about the arrangements in Wanfo Pavilion. How did you learn of this ceiling?",
           "choices": [
             {
-              "label": "I saw Wanfo Pavilion in a dream.",
+              "label": "I saw it in a dream.",
               "next": "9a"
             },
             {
-              "label": "I happened to hear about it while chatting with the artisans.",
+              "label": "I heard about it while chatting with the artisans.",
               "next": "9b"
             }
           ]
         },
         "10": {
-          "text": "(lowering his voice) Apart from the artisans, you, me, and His Majesty, no one else knows of this ceiling. Do not mention it to anyone again.",
+          "text": "(lowering his voice) Apart from the artisans and the two of us, no one else knows of this ceiling. Do not mention it to anyone again.",
           "next": 11
         },
         "11": {
-          "text": "To others, it may be only a piece of woodwork. To me, it concerns an important karmic bond. Do you believe in karmic connection?",
+          "text": "To others, it may be only a piece of woodwork. To me, it is bound up with causes and conditions. Do you believe that all things come into being through such connections?",
           "choices": [
             {
               "label": "I do.",
@@ -434,15 +435,15 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "I was born to humble circumstances and entered the palace as a eunuch in my youth to make a living. Later, by the late emperor’s trust, I was ordered to serve in the Eastern Palace, attending to the young crown prince.",
+          "text": "I was born into humble circumstances and entered the palace as a eunuch in my youth to make a living. After earning the late emperor’s trust, I was ordered to attend the young crown prince.",
           "next": 15
         },
         "15": {
-          "text": "I stayed by the crown prince day and night, watching him study and grow, until he ascended the throne at the age of seven. To repay that grace, I have guarded His Majesty ever since.",
+          "text": "I remained by the crown prince’s side day and night, until he ascended the throne at the age of seven. To repay that grace, I have guarded His Majesty ever since.",
           "next": 16
         },
         "16": {
-          "text": "Some say I am overbearing and monopolize power, that I drive away loyal ministers. Others would gladly see me removed. I admit, in this arena of power, one must sometimes commit necessary evils simply to survive.",
+          "text": "Some say I am overbearing and monopolize power, that I have driven away loyal ministers. I admit, in this arena of power, one must sometimes commit necessary evils to survive.",
           "next": 17
         },
         "17": {
@@ -450,7 +451,7 @@ const SCRIPTS_DATA = {
           "next": 18
         },
         "18": {
-          "text": "When I designed this ceiling, I placed a five-clawed golden dragon at the center to symbolize His Majesty. Around it are eight swimming dragons, and beyond them the Eight Buddhist Treasures—like stars surrounding the moon, protecting the emperor.",
+          "text": "In designing this ceiling, I placed a five-clawed dragon at the center. Around it are eight swimming dragons, and beyond them are the Eight Buddhist Treasures—like stars surrounding the moon, protecting the emperor.",
           "image": "images/image_4.2.jpg",
           "next": 19
         },
@@ -463,13 +464,13 @@ const SCRIPTS_DATA = {
               "next": "21a"
             },
             {
-              "label": "I think they will first judge your rights and wrongs.",
+              "label": "I think they will first judge your merits and faults.",
               "next": "21b"
             }
           ]
         },
         "22": {
-          "text": "Before others take notice, go to Wanfo Pavilion and see that ceiling for yourself. If you can understand even a little of it, then my intentions will not have been in vain.",
+          "text": "Before anyone else notices, go to Wanfo Pavilion and see that ceiling for yourself. If you can understand even a little of it, then my intentions will not have been in vain.",
           "next": "end"
         },
         "9a": {
@@ -485,7 +486,7 @@ const SCRIPTS_DATA = {
           "next": 22
         },
         "21b": {
-          "text": "(sighing) A person’s life is rarely his own to command. Right and wrong, merit and fault—how many can truly understand?",
+          "text": "(sighing) A person’s life is rarely his own to command. Right and wrong, merit and fault—who can truly understand them?",
           "next": 22
         }
       }
@@ -749,10 +750,11 @@ const SCRIPTS_DATA = {
         },
         "2": {
           "text": "京城秋高氣爽，最適合登樓遠眺。可惜沒有知己一同欣賞這景色。",
-          "next": 3
+          "next": 3,
+          "image": "images/image_3.1.jpg"
         },
         "3": {
-          "text": "觀眾：（內心想法）這是誰在誦詩？或許我也該以詩相和。",
+          "text": "（內心想法）這是誰在誦詩？或許我也該以詩相和。",
           "choices": [
             {
               "label": "背誦一首蘇軾的詩。",
@@ -769,15 +771,15 @@ const SCRIPTS_DATA = {
           "next": 8
         },
         "8": {
-          "text": "承蒙皇恩，我曾入翰林院編修《明史》，得以細讀前代君臣治亂、王朝興衰。",
+          "text": "承蒙皇恩，我曾入翰林院編纂《明史》，得以細讀前代君臣治亂、王朝興衰。",
           "next": 9
         },
         "9": {
-          "text": "我也常常探訪京城古蹟。一來賞景散心，二來也想看看前朝遺跡。",
+          "text": "我也常常探訪京城古蹟。一來賞景散心，二來也想看看舊朝遺跡。",
           "next": 10
         },
         "10": {
-          "text": "觀眾：請問先生，可曾去過智化寺？",
+          "text": "請問先生，可曾去過智化寺？",
           "next": 11
         },
         "11": {
@@ -793,7 +795,7 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "觀眾：晚輩才疏學淺，不太了解這些往事，願聽先生賜教。",
+          "text": "晚輩才疏學淺，不太了解這些往事，願聽先生賜教。",
           "next": 15
         },
         "15": {
@@ -820,20 +822,20 @@ const SCRIPTS_DATA = {
           ]
         },
         "20": {
-          "text": "（嘆息）只是歷史中的因果，未必總能看得分明。年歲漸長，我反而更願意把心力寄託在詩文之中。",
+          "text": "（嘆息）只是歷史中的因果，未必總能看得分明。年歲漸長，我反而更願將心力寄於詩文之中。",
           "next": 21
         },
         "21": {
-          "text": "今日與您萍水相逢，卻因詩結緣。我曾抄錄幾首明代文人題詠智化寺的詩作，就請您當作禮物收下吧。",
+          "text": "今日與您萍水相逢，卻因詩結緣。我曾抄錄幾首明代文人題詠智化寺的詩作，請您收下，權作一份薄禮。",
           "next": "end"
         },
         "5a": {
-          "text": "觀眾：沙河燈火照山紅，歌鼓喧喧笑語中。為問少年心在否，角巾欹側鬢如蓬。",
+          "text": "沙河燈火照山紅，歌鼓喧喧笑語中。為問少年心在否，角巾欹側鬢如蓬。",
           "image": "images/image_3.2.jpg",
           "next": "6a"
         },
         "5b": {
-          "text": "觀眾：望海樓明照曙霞，護江堤白蹋晴沙。濤聲夜入伍員廟，柳色春藏蘇小家。",
+          "text": "望海樓明照曙霞，護江堤白蹋晴沙。濤聲夜入伍員廟，柳色春藏蘇小家。",
           "image": "images/image_3.2.jpg",
           "next": "6b"
         },
@@ -848,7 +850,7 @@ const SCRIPTS_DATA = {
           "next": 7
         },
         "19a": {
-          "text": "有識之士，所見略同。以史為鑑，正是我們共有的責任。",
+          "text": "有識之士，所見略同。以史為鑑，正是我輩之責。",
           "next": 20
         },
         "19b": {
@@ -884,11 +886,11 @@ const SCRIPTS_DATA = {
           "next": 5
         },
         "5": {
-          "text": "觀眾：（內心想法）宮廷雅樂、御賜經書……莫非此人就是創建智化寺的宦官王振？",
+          "text": "（內心想法）宮廷雅樂、御賜經書……莫非此人就是創建智化寺的宦官王振？",
           "next": 6
         },
         "6": {
-          "text": "觀眾：請公公留步。敢問萬佛閣中的九龍藻井，可已完工？",
+          "text": "請公公留步。敢問萬佛閣中的九龍藻井，可已完工？",
           "next": 7
         },
         "7": {
@@ -905,7 +907,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "10": {
-          "text": "（壓低聲音）這座藻井，除了工匠、你、我，便只有聖上知曉。切莫再與他人提起。",
+          "text": "（壓低聲音）這座藻井，除了工匠之外，便只有你與我知曉。切莫再與他人提起。",
           "next": 11
         },
         "11": {
@@ -926,15 +928,15 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "我出身寒微，年少時為求生計入宮為宦。後來承蒙先皇信任，被命入東宮，侍奉年幼的太子。",
+          "text": "我出身寒微，年少時為求生計入宮為宦。後來承蒙先皇信任，侍奉年幼的太子。",
           "next": 15
         },
         "15": {
-          "text": "我與太子朝夕相伴，看著他讀書、長大，直到他七歲登基。為報知遇之恩，我自此日夜守護在皇上身邊。",
+          "text": "我與太子朝夕相伴，直到他七歲登基。為報知遇之恩，我自此日夜守護在皇上身邊。",
           "next": 16
         },
         "16": {
-          "text": "有人說我專權跋扈，排擠忠良；也有人恨不得將我除去。我承認，在這權力場上，為求自保，難免要行必要之惡。",
+          "text": "有人說我專權跋扈，排擠忠良。我承認，在這權力場上，為求自保，難免要行必要之惡。",
           "next": 17
         },
         "17": {
@@ -942,7 +944,7 @@ const SCRIPTS_DATA = {
           "next": 18
         },
         "18": {
-          "text": "我設計這座藻井時，以五爪金龍居中，象徵聖上；四周環繞八條游龍，外圍再飾以佛教八寶，寓意眾星拱月，護佑皇上。",
+          "text": "我設計這座藻井時，以五爪金龍居中，四周環繞八條遊龍，外圍再飾以佛教八寶，寓意眾星拱月，護佑皇上。",
           "image": "images/image_4.2.jpg",
           "next": 19
         },
@@ -961,7 +963,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "22": {
-          "text": "趁旁人尚未留意，你去萬佛閣看看那座藻井吧。若你能看懂其中一二，我這番心意，也算沒有白費。",
+          "text": "趁旁人尚未察覺，你去萬佛閣看看那座藻井吧。若你能看懂其中一二，我這番心意，也算沒有白費。",
           "next": "end"
         },
         "9a": {
@@ -1241,10 +1243,11 @@ const SCRIPTS_DATA = {
         },
         "2": {
           "text": "京城秋高气爽，最适合登楼远眺。可惜没有知己一同欣赏这景色。",
-          "next": 3
+          "next": 3,
+          "image": "images/image_3.1.jpg"
         },
         "3": {
-          "text": "观众：（内心想法）这是谁在诵诗？或许我也该以诗相和。",
+          "text": "（内心想法）这是谁在诵诗？或许我也该以诗相和。",
           "choices": [
             {
               "label": "背诵一首苏轼的诗。",
@@ -1261,15 +1264,15 @@ const SCRIPTS_DATA = {
           "next": 8
         },
         "8": {
-          "text": "承蒙皇恩，我曾入翰林院编修《明史》，得以细读前代君臣治乱、王朝兴衰。",
+          "text": "承蒙皇恩，我曾入翰林院编纂《明史》，得以细读前代君臣治乱、王朝兴衰。",
           "next": 9
         },
         "9": {
-          "text": "我也常常探访京城古迹。一来赏景散心，二来也想看看前朝遗迹。",
+          "text": "我也常常探访京城古迹。一来赏景散心，二来也想看看旧朝遗迹。",
           "next": 10
         },
         "10": {
-          "text": "观众：请问先生，可曾去过智化寺？",
+          "text": "请问先生，可曾去过智化寺？",
           "next": 11
         },
         "11": {
@@ -1285,7 +1288,7 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "观众：晚辈才疏学浅，不太了解这些往事，愿听先生赐教。",
+          "text": "晚辈才疏学浅，不太了解这些往事，愿听先生赐教。",
           "next": 15
         },
         "15": {
@@ -1312,20 +1315,20 @@ const SCRIPTS_DATA = {
           ]
         },
         "20": {
-          "text": "（叹息）只是历史中的因果，未必总能看得分明。年岁渐长，我反而更愿意把心力寄托在诗文之中。",
+          "text": "（叹息）只是历史中的因果，未必总能看得分明。年岁渐长，我反而更愿把心力寄于诗文之中。",
           "next": 21
         },
         "21": {
-          "text": "今日与您萍水相逢，却因诗结缘。我曾抄录几首明代文人题咏智化寺的诗作，就请您当作礼物收下吧。",
+          "text": "今日与您萍水相逢，却因诗结缘。我曾抄录几首明代文人题咏智化寺的诗作，请您收下，权作一份薄礼。",
           "next": "end"
         },
         "5a": {
-          "text": "观众：沙河灯火照山红，歌鼓喧喧笑语中。为问少年心在否，角巾欹侧鬓如蓬。",
+          "text": "沙河灯火照山红，歌鼓喧喧笑语中。为问少年心在否，角巾欹侧鬓如蓬。",
           "image": "images/image_3.2.jpg",
           "next": "6a"
         },
         "5b": {
-          "text": "观众：望海楼明照曙霞，护江堤白蹋晴沙。涛声夜入伍员庙，柳色春藏苏小家。",
+          "text": "望海楼明照曙霞，护江堤白蹋晴沙。涛声夜入伍员庙，柳色春藏苏小家。",
           "image": "images/image_3.2.jpg",
           "next": "6b"
         },
@@ -1340,7 +1343,7 @@ const SCRIPTS_DATA = {
           "next": 7
         },
         "19a": {
-          "text": "有识之士，所见略同。以史为鉴，正是我们共有的责任。",
+          "text": "有识之士，所见略同。以史为鉴，正是我辈之责。",
           "next": 20
         },
         "19b": {
@@ -1376,11 +1379,11 @@ const SCRIPTS_DATA = {
           "next": 5
         },
         "5": {
-          "text": "观众：（内心想法）宫廷雅乐、御赐经书……莫非此人就是创建智化寺的宦官王振？",
+          "text": "（内心想法）宫廷雅乐、御赐经书……莫非此人就是创建智化寺的宦官王振？",
           "next": 6
         },
         "6": {
-          "text": "观众：请公公留步。敢问万佛阁中的九龙藻井，可已完工？",
+          "text": "请公公留步。敢问万佛阁中的九龙藻井，可已完工？",
           "next": 7
         },
         "7": {
@@ -1397,7 +1400,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "10": {
-          "text": "（压低声音）这座藻井，除了工匠、你、我，便只有圣上知晓。切莫再与他人提起。",
+          "text": "（压低声音）这座藻井，除了工匠之外，便只有你与我知晓。切莫再与他人提起。",
           "next": 11
         },
         "11": {
@@ -1418,15 +1421,15 @@ const SCRIPTS_DATA = {
           "next": 14
         },
         "14": {
-          "text": "我出身寒微，年少时为求生计入宫为宦。后来承蒙先皇信任，被命入东宫，侍奉年幼的太子。",
+          "text": "我出身寒微，年少时为求生计入宫为宦。后来承蒙先皇信任，侍奉年幼的太子。",
           "next": 15
         },
         "15": {
-          "text": "我与太子朝夕相伴，看着他读书、长大，直到他七岁登基。为报知遇之恩，我自此日夜守护在皇上身边。",
+          "text": "我与太子朝夕相伴，直到他七岁登基。为报知遇之恩，我自此日夜守护在皇上身边。",
           "next": 16
         },
         "16": {
-          "text": "有人说我专权跋扈，排挤忠良；也有人恨不得将我除去。我承认，在这权力场上，为求自保，难免要行必要之恶。",
+          "text": "有人说我专权跋扈，排挤忠良。我承认，在这权力场上，为求自保，难免要行必要之恶。",
           "next": 17
         },
         "17": {
@@ -1434,7 +1437,7 @@ const SCRIPTS_DATA = {
           "next": 18
         },
         "18": {
-          "text": "我设计这座藻井时，以五爪金龙居中，象征圣上；四周环绕八条游龙，外围再饰以佛教八宝，寓意众星拱月，护佑皇上。",
+          "text": "我设计这座藻井时，以五爪金龙居中，四周环绕八条游龙，外围再饰以佛教八宝，寓意众星拱月，护佑皇上。",
           "image": "images/image_4.2.jpg",
           "next": 19
         },
@@ -1453,7 +1456,7 @@ const SCRIPTS_DATA = {
           ]
         },
         "22": {
-          "text": "趁旁人尚未留意，你去万佛阁看看那座藻井吧。若你能看懂其中一二，我这番心意，也算没有白费。",
+          "text": "趁旁人尚未察觉，你去万佛阁看看那座藻井吧。若你能看懂其中一二，我这番心意，也算没有白费。",
           "next": "end"
         },
         "9a": {
@@ -1465,7 +1468,7 @@ const SCRIPTS_DATA = {
           "next": 10
         },
         "21a": {
-          "text": "（叹息）木有朽时，彩有褪日，美好终究难以长存。",
+          "text": "（叹息）木有朽时，彩有褪日，再美之物，终究难以长存。",
           "next": 22
         },
         "21b": {
